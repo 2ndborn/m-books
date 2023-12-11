@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h1>I am extending the base template</h1>
     {% for title in titles %}
         {{title.title_name}}<br>
         {{title.title_year}}<br>
         {{title.title_story}}<br>
     {% endfor %}
+    
 {% endblock %}
