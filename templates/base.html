@@ -15,6 +15,35 @@
 </head>
 <body>
 
+    <header>
+
+        <nav class="nav-extended grey darken-3">
+            <div class="nav-wrapper">
+                <a href="{{ url_for('get_titles') }}" class="brand-logo">M-Books</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('get_titles') }}">Home</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Add Title</a></li>
+                    <li><a href="#">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <ul class="sidenav" id="mobile-demo">
+            <h4 class="center-align">M-Books</h4>
+            <li><a href="{{ url_for('get_titles') }}">Home</a></li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Add Title</a></li>
+            <li><a href="#">Sign Out</a></li>
+        </ul>
+
+    </header>
+
     {% block content %}
     {% endblock %}
 
