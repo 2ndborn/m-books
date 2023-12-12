@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for title in titles %}
-        {{title.title_name}}<br>
-        {{title.title_year}}<br>
-        {{title.title_story}}<br>
-    {% endfor %}
+    <h3 class="center-align">Manga Book List</h3>
     
+    <div class="row">
+        <div class="col s8 offset-m2 card-panel">
+            <div class="col s12 collection">
+                {% for title in titles %}
+                    <a href="#!" class="collection-item">{{title.title_name}}</a>                    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

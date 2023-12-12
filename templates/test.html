@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for title in titles %}
+        {{title.title_name}}<br>
+        {{title.title_year}}<br>
+        {{title.title_story}}<br>
+    {% endfor %}
+    <div class="row">
+        <div class="collection">
+            <a href="#!" class="collection-item">Alvin</a>
+            <a href="#!" class="collection-item active">Alvin</a>
+            <a href="#!" class="collection-item">Alvin</a>
+            <a href="#!" class="collection-item">Alvin</a>
+        </div>
+    </div>
+{% endblock %}

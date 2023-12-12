@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_titles")
 def get_titles():
-    titles = mongo.db.titles.find()
+    titles = list(mongo.db.titles.find())
     return render_template("titles.html", titles=titles)
 
 
