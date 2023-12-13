@@ -63,7 +63,7 @@ def signin():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Greetings, {}".format(request.form.get("username")))
+                flash("Greetings! {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
             else:
                 # incorrect password entered
@@ -100,7 +100,14 @@ def signout():
 
 @app.route("/summary")
 def summary():
-    return render_template("test.html")
+    titles = list(mongo.db.titles.find())
+    return render_template("test.html", titles=titles)
+
+
+@app.route("/reviews")
+def reviews():
+    reviews = list(mongo.db.reviews.find())
+    return render_template("profile.html", reviews=reviews)
 
 
 if __name__ == "__main__":

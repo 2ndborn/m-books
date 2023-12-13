@@ -2,27 +2,62 @@
 {% block content %}
 
     {% for title in titles %}
+
         {{title.title_name}}<br>
         {{title.title_year}}<br>
         {{title.title_story}}<br>
+
     {% endfor %}
+
     <h3 class="center-align">Summary</h3>
 
-    <div class="row">
-        <div class="col s8 offset-m2 container">
+    <div class="row container">
+        <div class="col s12 container">
             <div class="col s10 offset-s1 card-panel">
+                {% for title in titles %}
                 <img class="materialboxed" height="auto" width="100%"
-                    src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/05/Demon-Slayer-1.jpg">
+                    src="{{title.title_image}}">            
+                <ul class="col s12 collection with-header">
+                    <li class="collection-header">
+                        <h4><strong>{{title.title_name}}</strong></h4>
+                    </li>
+                    <li class="collection-item"><strong>Year Release: </strong>{{title.title_year}}</li>
+                    <li class="collection-item"><strong>Chapters: </strong>{{title.title_chapters}}</li>
+                    <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
+                    <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
+                </ul>
+                {% endfor %}
+                {% if session.user %}
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a class="waves-effect waves-light btn">Edit</a>
+                            <a class="waves-effect waves-light btn">Delete</a>
+                            <a class="waves-effect waves-light btn">Write A Review</a>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-            <ul class="col s10 offset-s1 collection with-header card-panel">
-                <li class="collection-header">
-                    <h4>Demon Slayer</h4>
-                </li>
-                <li class="collection-item"><strong>Year Release: </strong> 2016</li>
-                <li class="collection-item"><strong>Chapters: </strong>201</li>
-                <li class="collection-item"><strong>Mangaka: </strong>Koyoharu Gotouge</li>
-                <li class="collection-item"><strong>Storyline: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, ratione repudiandae quibusdam amet, quos hic, adipisci cumque commodi earum fugiat recusandae dolorem accusantium? A repudiandae magnam laborum ipsam provident nam?</li>
-            </ul>
+        </div>
+    </div>
+
+    <h4 class="center-align">Reviews</h4>
+    
+    <div class="row container">
+        <div class="col s12 container">
+            <div class="col s10 offset-s1 card-panel">
+                <ul class="col s12 collection with-header">
+                    <h6><strong>Amazing read</strong></h6>                   
+                    <p>I love Demon Slayer</p>                   
+                </ul>
+                {% if session.user %}
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a class="waves-effect waves-light btn">Edit</a>
+                            <a class="waves-effect waves-light btn">Delete</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}
