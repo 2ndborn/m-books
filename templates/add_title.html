@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Add Title</h3>
+
+    <div class="row container">
+        <form class="col s12" method="POST" action="">
+            <div class="row card-panel">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="title_name" name="title_name" type="text" minlength="5" maxlength="50" class="validate" required>
+                        <label for="title_name">Name of Title</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="title_image" name="title_image" type="media" class="validate" required>
+                        <label for="title_image">Image</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="title_year" name="title_year" type="number" minlength="4" maxlength="4" class="validate" required>
+                        <label for="title_year">Year of Release</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="title_chapters" name="title_chapters" type="number" class="validate" required>
+                        <label for="title_chapters">Chapters</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="title_mangaka" name="title_mangaka" type="text" minlength="5" maxlength="25" class="validate" required>
+                        <label for="title_mangaka">Name of Mangaka</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"required></textarea>
+                        <label for="textarea1">Textarea</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="btn-large">Add Title</button>
+                    </div>
+                </div>
+            </div>            
+        </form>
+    </div>
+
+{% endblock %}
