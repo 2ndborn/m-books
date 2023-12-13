@@ -110,8 +110,21 @@ def reviews():
     return render_template("profile.html", reviews=reviews)
 
 
-@app.route("/add_title")
+@app.route("/add_title", methods=["GET", "POST"])
 def add_title():
+    if request.method == "POST":
+        title = {
+            "title_name": request.form.get("title_name"),
+            "title_year": request.form.get("title_year"),
+            "title_chapter": request.form.get("title_chapter"),
+            "title_mangaka": request.form.get("title_mangaka"),
+            "title_story": request.form.get("title_story"),
+            "title_image": request.form.get("title_image")
+        }
+        mongo.db.titles.insert_one(title)
+        flash("Title Successfully Added")
+        return redirect(url_for("get_titles"))
+
     return render_template("add_title.html")
 
 

@@ -4,7 +4,7 @@
     <h3 class="center-align">Add Title</h3>
 
     <div class="row container">
-        <form class="col s12" method="POST" action="">
+        <form class="col s12" method="POST" action="{{ url_for('add_title')}}">
             <div class="row card-panel">
                 <div class="row">
                     <div class="input-field col s6">
@@ -12,7 +12,7 @@
                         <label for="title_name">Name of Title</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="title_image" name="title_image" type="media" class="validate" required>
+                        <input id="title_image" name="title_image" type="url" class="validate" required>
                         <label for="title_image">Image</label>
                     </div>
                 </div>
@@ -36,8 +36,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"required></textarea>
-                        <label for="textarea1">Textarea</label>
+                        <textarea id="title_story" name="title_story" class="materialize-textarea" required></textarea>
+                        <label for="title_story">Textarea</label>
                     </div>
                 </div>
                 <div class="row">
