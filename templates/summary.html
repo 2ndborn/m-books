@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+    
+    <div class="row">
+        <div class="col s12 back-button">
+            <a href="{{ url_for('get_titles') }}" class="waves-effect waves-light btn"><i class="fa-solid fa-arrow-left"></i></a>            
+        </div>
+    </div>
 
     <h3 class="center-align">Summary</h3>
 
@@ -38,9 +44,9 @@
         <div class="col s12 container">
             <div class="col s10 offset-s1 card-panel">
                 <ul class="col s12 collection with-header">
-                    {% for review in reviews %}
-                    <h6><strong>{{review.review_name}}</strong></h6>                   
-                    <p>{{review.review_review}}</p>
+                    {% for title in titles %}
+                    <h6><strong>{{title.title_rname}}</strong></h6>                   
+                    <p>{{title.title_review}}</p>
                     {% endfor %}
                 </ul>
                 {% if session.user %}
