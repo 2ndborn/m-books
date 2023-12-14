@@ -101,13 +101,8 @@ def signout():
 @app.route("/summary")
 def summary():
     titles = list(mongo.db.titles.find())
-    return render_template("test.html", titles=titles)
-
-
-@app.route("/reviews")
-def reviews():
     reviews = list(mongo.db.reviews.find())
-    return render_template("profile.html", reviews=reviews)
+    return render_template("summary.html", titles=titles, reviews=reviews)
 
 
 @app.route("/add_title", methods=["GET", "POST"])

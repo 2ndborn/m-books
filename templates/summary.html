@@ -1,14 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for title in titles %}
-
-        {{title.title_name}}<br>
-        {{title.title_year}}<br>
-        {{title.title_story}}<br>
-
-    {% endfor %}
-
     <h3 class="center-align">Summary</h3>
 
     <div class="row container">
@@ -46,8 +38,10 @@
         <div class="col s12 container">
             <div class="col s10 offset-s1 card-panel">
                 <ul class="col s12 collection with-header">
-                    <h6><strong>Amazing read</strong></h6>                   
-                    <p>I love Demon Slayer</p>                   
+                    {% for review in reviews %}
+                    <h6><strong>{{review.review_name}}</strong></h6>                   
+                    <p>{{review.review_review}}</p>
+                    {% endfor %}
                 </ul>
                 {% if session.user %}
                     <div class="row">
