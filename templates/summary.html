@@ -4,20 +4,20 @@
     <h3 class="center-align">Summary</h3>
 
     <div class="row container">
-        <div class="col s12 container">
+        <div class="col s12 container" method="POST" action="{{ url_for('summary', titles_id=titles._id) }}">
             <div class="col s10 offset-s1 card-panel">
                 {% for title in titles %}
-                <img class="materialboxed" height="auto" width="100%"
-                    src="{{title.title_image}}">            
-                <ul class="col s12 collection with-header">
-                    <li class="collection-header">
-                        <h4><strong>{{title.title_name}}</strong></h4>
-                    </li>
-                    <li class="collection-item"><strong>Year Release: </strong>{{title.title_year}}</li>
-                    <li class="collection-item"><strong>Chapters: </strong>{{title.title_chapters}}</li>
-                    <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
-                    <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
-                </ul>
+                    <img class="materialboxed" height="auto" width="100%"
+                        src="{{title.title_image}}">            
+                    <ul class="col s12 collection with-header">
+                        <li class="collection-header">
+                            <h4><strong>{{title.title_name}}</strong></h4>
+                        </li>
+                        <li class="collection-item"><strong>Year Release: </strong>{{title.title_year}}</li>
+                        <li class="collection-item"><strong>Chapters: </strong>{{title.title_chapters}}</li>
+                        <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
+                        <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
+                    </ul>
                 {% endfor %}
                 {% if session.user %}
                     <div class="row">
