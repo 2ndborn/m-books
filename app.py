@@ -113,7 +113,9 @@ def add_title():
             "title_chapter": request.form.get("title_chapter"),
             "title_mangaka": request.form.get("title_mangaka"),
             "title_story": request.form.get("title_story"),
-            "title_image": request.form.get("title_image")
+            "title_image": request.form.get("title_image"),
+            "title_rname": request.form.get("title_rname"),
+            "title_review": request.form.get("title_review")
         }
         mongo.db.titles.insert_one(title)
         flash("Title Successfully Added")
