@@ -24,74 +24,72 @@
                         <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
                         <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
                     </ul>
-                {% endfor %}
-                {% if session.user %}
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <!-- Modal Trigger -->
-                            <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
-                    
-                            <!-- Modal Structure -->
-                            <div id="modal1" class="modal">
-                                <form method="POST" action="{{ url_for('edit_title', titles_id=titles._id) }}">
-                                    <div class="modal-content">
-                                        {% for title in titles %}
-                                            <div class="row">
-                                                <div class="input-field col s6">
-                                                    <input id="title_name" name="title_name" type="text" value="{{title.title_name}}" minlength="5" maxlength="50" class="validate" required>
-                                                    <label for="title_name">Name of Title</label>
-                                                </div>
-                                                <div class="input-field col s6">
-                                                    <input id="title_image" name="title_image" type="url" value="{{title.title_image}}" class="validate" required>
-                                                    <label for="title_image">Image</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <input id="title_year" name="title_year" type="number" value="{{title.title_year}}" minlength="4" maxlength="4" class="validate" required>
-                                                    <label for="title_year">Year of Release</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <input id="title_chapters" name="title_chapters" type="number" value="{{title.title_chapters}}" class="validate" required>
-                                                    <label for="title_chapters">Chapters</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <input id="title_mangaka" name="title_mangaka" type="text" value="{{title.title_mangaka}}" minlength="5" maxlength="25" class="validate" required>
-                                                    <label for="title_mangaka">Name of Mangaka</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <textarea id="title_story" name="title_story" class="materialize-textarea">{{title.title_story}}</textarea>
-                                                    <label for="title_story">Storyline</label>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                        <div class="row">
-                                            <div class="col s12 center-align">
-                                                <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
-                                                    Cancel
-                                                </a>
-                                                <button type="submit" class="btn-large modal-close">Complete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+
+                    {% if session.user %}
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <!-- Modal Trigger -->
+                                <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
+                                <a href="{{ url_for('delete_title', title_id=title._id) }}" class="waves-effect waves-light btn">Delete</a>
+                                <a class="waves-effect waves-light btn">Write A Review</a>
                             </div>
                         </div>
+                    {% endif %}
+                {% endfor %}
+
+                
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <form method="POST" action="{{ url_for('edit_title', titles_id=titles._id) }}">
+                            <div class="modal-content">
+                                {% for title in titles %}
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="title_name" name="title_name" type="text" value="{{title.title_name}}" minlength="5" maxlength="50" class="validate" required>
+                                            <label for="title_name">Name of Title</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="title_image" name="title_image" type="url" value="{{title.title_image}}" class="validate" required>
+                                            <label for="title_image">Image</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="title_year" name="title_year" type="number" value="{{title.title_year}}" minlength="4" maxlength="4" class="validate" required>
+                                            <label for="title_year">Year of Release</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="title_chapters" name="title_chapters" type="number" value="{{title.title_chapters}}" class="validate" required>
+                                            <label for="title_chapters">Chapters</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="title_mangaka" name="title_mangaka" type="text" value="{{title.title_mangaka}}" minlength="5" maxlength="25" class="validate" required>
+                                            <label for="title_mangaka">Name of Mangaka</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="title_story" name="title_story" class="materialize-textarea">{{title.title_story}}</textarea>
+                                            <label for="title_story">Storyline</label>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
+                                            Cancel
+                                        </a>
+                                        <button type="submit" class="btn-large modal-close">Complete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <a class="waves-effect waves-light btn">Edit</a>
-                            <a class="waves-effect waves-light btn">Delete</a>
-                            <a class="waves-effect waves-light btn">Write A Review</a>
-                        </div>
-                    </div>
-                {% endif %}
+                </div>
             </div>
         </div>
     </div>
@@ -101,57 +99,58 @@
     <div class="row container">
         <div class="col s12 container">            
             <div class="col s10 offset-s1 card-panel">
-                    {% for review in reviews %}
-                        <ul class="col s12 collection with-header">                    
-                            <h6><strong>{{review.review_name}}</strong></h6>
-                            <p>{{review.review_review}}</p>                    
-                        </ul>
-                    {% endfor %}
-                {% if session.user %}
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <!-- Modal Trigger -->
-                            <Button class="waves-effect waves-light btn modal-trigger" href="#modal2">Add</button>
-                            
-                            <!-- Modal Structure -->
-                            <div id="modal2" class="modal">
-                                <form method="POST" action="{{ url_for('add_review')}}">
-                                    <div class="modal-content">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                {% for title in titles %}
-                                                    <input id="review_header" name="review_header" value="{{ title.title_name }}" type="text" class="validate" required>
-                                                    <label for="review_header">Title</label>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <input id="review_name" name="review_name" type="text" minlength="5" maxlength="50" class="validate"
-                                                    required>
-                                                <label for="review_name">Name Your Review</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <textarea id="review_review" name="review_review" class="materialize-textarea" required></textarea>
-                                                <label for="review_review">Write a Review</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12 center-align">
-                                                <button type="submit" class="btn-large modal-close">Add Review</button>
-                                            </div>
-                                        </div>
-                                    </div>                                    
-                                </form>
-                            </div>
-                            <a class="waves-effect waves-light btn">Edit</a>
-                            <a class="waves-effect waves-light btn">Delete</a>
-                        </div>
-                    </div>
-                {% endif %}
+                {% for review in reviews %}
+                    <ul class="col s12 collection with-header">                    
+                        <h6><strong>{{review.review_name}}</strong></h6>
+                        <p>{{review.review_review}}</p>
+                    {% if session.user %}
+                        <a class="waves-effect waves-light btn">Edit</a>
+                        <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn">Delete</a>
+                    {% endif %}
+                    </ul>
+                {% endfor %}
             </div>
         </div>
     </div>
+               
+        <div class="row">
+            <div class="col s12 center-align">
+                <!-- Modal Trigger -->
+                <Button class="waves-effect waves-light btn modal-trigger" href="#modal2">Add Review</button>
+                
+                <!-- Modal Structure -->
+                <div id="modal2" class="modal">
+                    <form method="POST" action="{{ url_for('add_review') }}">
+                        <div class="modal-content">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    {% for title in titles %}
+                                        <input id="review_header" name="review_header" value="{{ title.title_name }}" type="text" class="validate" required>
+                                        <label for="review_header">Title</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="review_name" name="review_name" type="text" minlength="5" maxlength="50" class="validate"
+                                        required>
+                                    <label for="review_name">Name Your Review</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="review_review" name="review_review" class="materialize-textarea" required></textarea>
+                                    <label for="review_review">Write a Review</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <button type="submit" class="btn-large modal-close">Add Review</button>
+                                </div>
+                            </div>
+                        </div>                                    
+                    </form>
+                </div>
+            </div>
+        </div>
 {% endblock %}

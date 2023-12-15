@@ -155,6 +155,20 @@ def add_review():
         return redirect(url_for("get_titles"))
 
 
+@app.route("/delete_title/<title_id>")
+def delete_title(title_id):
+    mongo.db.titles.delete_one({"_id": ObjectId(title_id)})
+    flash("Title Successfully Deleted")
+    return redirect(url_for("get_titles"))
+
+
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+    flash("Title Successfully Deleted")
+    return redirect(url_for("get_titles"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
