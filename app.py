@@ -101,7 +101,8 @@ def signout():
 @app.route("/summary/<titles_id>")
 def summary(titles_id):
     titles = list(mongo.db.titles.find({"_id": ObjectId(titles_id)}))
-    return render_template("summary.html", titles=titles)
+    reviews = list(mongo.db.reviews.find())
+    return render_template("summary.html", titles=titles, reviews=reviews)
 
 
 @app.route("/add_title", methods=["GET", "POST"])
@@ -122,6 +123,36 @@ def add_title():
         return redirect(url_for("get_titles"))
 
     return render_template("add_title.html")
+
+
+@app.route("/edit_title/<titles_id>", methods=["GET", "POST"])
+def edit_title(titles_id):
+    if request.method == "POST":
+        submit = {
+            "title_name": request.form.get("title_name"),
+            "title_year": request.form.get("title_year"),
+            "title_chapter": request.form.get("title_chapter"),
+            "title_mangaka": request.form.get("title_mangaka"),
+            "title_story": request.form.get("title_story"),
+            "title_image": request.form.get("title_image")
+        }
+        mongo.db.titles.update_many(
+            {"_id": ObjectId(titles_id)}, {"$set": submit})
+        flash("Title Successfully Updated")
+        return redirect("get_titles")
+
+
+@app.route("/add_review", methods=["GET", "POST"])
+def add_review():
+    if request.method == "POST":
+        review = {
+            "review_header": request.form.get("review_header"),
+            "review_name": request.form.get("review_name"),
+            "review_review": request.form.get("review_review"),
+        }
+        mongo.db.reviews.insert_one(review)
+        flash("Review Successfully Added")
+        return redirect(url_for("get_titles"))
 
 
 if __name__ == "__main__":
