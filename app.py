@@ -111,7 +111,7 @@ def add_title():
         title = {
             "title_name": request.form.get("title_name"),
             "title_year": request.form.get("title_year"),
-            "title_chapter": request.form.get("title_chapter"),
+            "title_chapters": request.form.get("title_chapters"),
             "title_mangaka": request.form.get("title_mangaka"),
             "title_story": request.form.get("title_story"),
             "title_image": request.form.get("title_image"),
@@ -125,21 +125,24 @@ def add_title():
     return render_template("add_title.html")
 
 
-@app.route("/edit_title/<titles_id>", methods=["GET", "POST"])
-def edit_title(titles_id):
+@app.route("/edit_title/<title_id>", methods=["GET", "POST"])
+def edit_title(title_id):
     if request.method == "POST":
         submit = {
             "title_name": request.form.get("title_name"),
             "title_year": request.form.get("title_year"),
-            "title_chapter": request.form.get("title_chapter"),
+            "title_chapters": request.form.get("title_chapters"),
             "title_mangaka": request.form.get("title_mangaka"),
             "title_story": request.form.get("title_story"),
             "title_image": request.form.get("title_image")
         }
         mongo.db.titles.update_many(
-            {"_id": ObjectId(titles_id)}, {"$set": submit})
+            {"_id": ObjectId(title_id)}, {"$set": submit})
         flash("Title Successfully Updated")
-        return redirect("get_titles")
+        return redirect(url_for("get_titles"))
+
+    title = mongo.db.titles.find_one({"_id": ObjectId(title_id)})
+    return render_template("summary.html", title=title)
 
 
 @app.route("/add_review", methods=["GET", "POST"])
