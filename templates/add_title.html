@@ -4,6 +4,7 @@
     <h3 class="center-align">Add Title</h3>
 
     <div class="row container">
+        {% for title in titles %}
         <form class="col s12" method="POST" action="{{ url_for('add_title')}}">
             <div class="row card-panel">
                 <div class="row">
@@ -40,6 +41,13 @@
                         <label for="title_story">Storyline</label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                            <input id="created_by" name="created_by" type="text" minlength="5" maxlength="25" class="validate"
+                                required>
+                            <label for="created_by">Created By</label>
+                    </div>
+                </div>
                 <h4 class="center-align">Share Your Opinion</h4>
                 <div class="row">
                     <div class="input-field col s12">
@@ -60,6 +68,7 @@
                 </div>                
             </div>            
         </form>
+        {% endfor %}
     </div>
 
 {% endblock %}

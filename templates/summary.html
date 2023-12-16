@@ -25,7 +25,7 @@
                         <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
                     </ul>
 
-                    {% if session.user %}
+                    {% if session.user == title.created_by %}
                         <div class="row">
                             <div class="col s12 center-align">
                                 <!-- Modal Trigger -->
@@ -100,7 +100,7 @@
         <div class="col s12 container">            
             <div class="col s10 offset-s1 card-panel">
                 {% for review in reviews %}
-                    <ul class="col s12 collection with-header">                    
+                    <ul class="col s12 collection with-header" method="POST" action="" >                    
                         <h6><strong>{{review.review_name}}</strong></h6>
                         <p>{{review.review_review}}</p>
                     {% if session.user %}

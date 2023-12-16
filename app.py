@@ -47,7 +47,7 @@ def register():
         # The new user is placed into a session cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect("profile", username=session["user"])
+        return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
 
@@ -116,7 +116,8 @@ def add_title():
             "title_story": request.form.get("title_story"),
             "title_image": request.form.get("title_image"),
             "title_rname": request.form.get("title_rname"),
-            "title_review": request.form.get("title_review")
+            "title_review": request.form.get("title_review"),
+            "created_by": session["user"]
         }
         mongo.db.titles.insert_one(title)
         flash("Title Successfully Added")
@@ -156,6 +157,20 @@ def add_review():
         mongo.db.reviews.insert_one(review)
         flash("Review Successfully Added")
         return redirect(url_for("get_titles"))
+
+
+@app.route("/show_review", methods=["GET", "POST"])
+def show_review():
+    # Assuming you have a MongoDB connection named 'mongo'
+    titles_collection = mongo.db.titles
+    reviews_collection = mongo.db.reviews
+
+    # Fetch specific fields from the documents
+    title_name = titles_collection.find_one()["title_name"]
+    review_header = reviews_collection.find_one()["review_header"]
+
+    if title_name == review_header:
+        print("review_name", "review_review")
 
 
 @app.route("/delete_title/<title_id>")
