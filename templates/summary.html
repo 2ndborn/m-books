@@ -35,60 +35,57 @@
                             </div>
                         </div>
                     {% endif %}
-                {% endfor %}
-
                 
                     <!-- Modal Structure -->
-                    {% for title in titles %}
                     <div id="modal1" class="modal">
                         <form method="POST" action="{{ url_for('edit_title', title_id=title._id) }}">
                             <div class="modal-content">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input id="title_name" name="title_name" type="text" value="{{title.title_name}}" minlength="5" maxlength="50" class="validate" required>
-                                            <label for="title_name">Name of Title</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <input id="title_image" name="title_image" type="url" value="{{title.title_image}}" class="validate" required>
-                                            <label for="title_image">Image</label>
-                                        </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="title_name" name="title_name" type="text" value="{{title.title_name}}" minlength="5" maxlength="50" class="validate" required>
+                                        <label for="title_name">Name of Title</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="title_year" name="title_year" type="number" value="{{title.title_year}}" minlength="4" maxlength="4" class="validate" required>
-                                            <label for="title_year">Year of Release</label>
-                                        </div>
+                                    <div class="input-field col s6">
+                                        <input id="title_image" name="title_image" type="url" value="{{title.title_image}}" class="validate" required>
+                                        <label for="title_image">Image</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="title_chapters" name="title_chapters" type="number" value="{{title.title_chapters}}" class="validate" required>
-                                            <label for="title_chapters">Chapters</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="title_year" name="title_year" type="number" value="{{title.title_year}}" minlength="4" maxlength="4" class="validate" required>
+                                        <label for="title_year">Year of Release</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="title_mangaka" name="title_mangaka" type="text" value="{{title.title_mangaka}}" minlength="5" maxlength="25" class="validate" required>
-                                            <label for="title_mangaka">Name of Mangaka</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="title_chapters" name="title_chapters" type="number" value="{{title.title_chapters}}" class="validate" required>
+                                        <label for="title_chapters">Chapters</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <textarea id="title_story" name="title_story" class="materialize-textarea">{{title.title_story}}</textarea>
-                                            <label for="title_story">Storyline</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="title_mangaka" name="title_mangaka" type="text" value="{{title.title_mangaka}}" minlength="5" maxlength="25" class="validate" required>
+                                        <label for="title_mangaka">Name of Mangaka</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="col s12 center-align">
-                                            <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
-                                                Cancel
-                                            </a>
-                                            <button type="submit" class="btn-large modal-close">Complete</button>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="title_story" name="title_story" class="materialize-textarea">{{title.title_story}}</textarea>
+                                        <label for="title_story">Storyline</label>
                                     </div>
-                                {% endfor %}
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
+                                            Cancel
+                                        </a>
+                                        <button type="submit" class="btn-large modal-close">Complete</button>
+                                    </div>
+                                </div>                                
                             </div>
                         </form>
                     </div>
+                {% endfor %}    
                 </div>
             </div>
         </div>
