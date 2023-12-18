@@ -24,19 +24,19 @@
                         <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
                         <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
                     </ul>
-
-                    {% if session.user == title.created_by %}
+                    
                         <div class="row">
                             <div class="col s12 center-align">
-                                <!-- Modal Trigger -->
+                                <!-- Modal Trigger for edit, del & review-->
+                                {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
                                 <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
                                 <a href="{{ url_for('delete_title', title_id=title._id) }}" class="waves-effect waves-light btn">Delete</a>
+                                {% endif %}
                                 <a class="waves-effect waves-light btn">Write A Review</a>
                             </div>
                         </div>
-                    {% endif %}
-                
-                    <!-- Modal Structure -->
+                    
+                    <!-- Modal Structure to edit title-->
                     <div id="modal1" class="modal">
                         <form method="POST" action="{{ url_for('edit_title', title_id=title._id) }}">
                             <div class="modal-content">

@@ -143,7 +143,6 @@ def edit_title(title_id):
             "title_mangaka": request.form.get("title_mangaka"),
             "title_story": request.form.get("title_story"),
             "title_image": request.form.get("title_image"),
-            "created_by": session["user"]
         }
         mongo.db.titles.update_many(
             {"_id": ObjectId(title_id)}, {"$set": submit})
