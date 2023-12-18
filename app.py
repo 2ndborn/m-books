@@ -27,6 +27,13 @@ def get_titles():
     return render_template("titles.html", titles=titles)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    titles = list(mongo.db.titles.find({"$text": {"$search": query}}))
+    return render_template("titles.html", titles=titles)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -147,6 +154,15 @@ def edit_title(title_id):
     return render_template("summary.html", title=title)
 
 
+@app.route("/reviews_coll")
+def reviews_coll():
+    reviews = []
+    title_name = mongo.db.titles.find(title_name)
+    review_header = mongo.db.reviews.find(review_header)
+    if title_name == review_header:
+        reviews.append(object)
+
+
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
@@ -158,20 +174,6 @@ def add_review():
         mongo.db.reviews.insert_one(review)
         flash("Review Successfully Added")
         return redirect(url_for("get_titles"))
-
-
-@app.route("/show_review", methods=["GET", "POST"])
-def show_review():
-    # Assuming you have a MongoDB connection named 'mongo'
-    titles_collection = mongo.db.titles
-    reviews_collection = mongo.db.reviews
-
-    # Fetch specific fields from the documents
-    title_name = titles_collection.find_one()["title_name"]
-    review_header = reviews_collection.find_one()["review_header"]
-
-    if title_name == review_header:
-        print("review_name", "review_review")
 
 
 @app.route("/delete_title/<title_id>")
