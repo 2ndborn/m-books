@@ -40,10 +40,19 @@
                         <label for="title_story">Storyline</label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="btn-large">Add Title</button>
+                    </div>
+                </div>
+            </div>     
+        </form>
 
-                <!--Add a review-->
-                <h4 class="center-align">Share Your Opinion</h4>
-                
+        <!--Add a review-->
+        <h4 class="center-align">Share Your Opinion</h4>
+
+        <form method="POST" action="{{ url_for('add_review', ) }}">
+            <div class="row card-panel">        
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="title_rname" name="title_rname" type="text" minlength="5" maxlength="50" class="validate" placeholder="Optional">
@@ -55,12 +64,7 @@
                         <textarea id="title_review" name="title_review" class="materialize-textarea" placeholder="Optional"></textarea>
                         <label for="title_review">Write a Review</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button type="submit" class="btn-large">Add Title</button>
-                    </div>
-                </div>                
+                </div>               
             </div>            
         </form>
     </div>

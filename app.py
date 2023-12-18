@@ -162,15 +162,16 @@ def reviews_coll():
         reviews.append(object)
 
 
-@app.route("/add_review", methods=["GET", "POST"])
-def add_review():
+@app.route("/add_review/title/<title>", methods=["GET", "POST"])
+def add_review(title):
     if request.method == "POST":
+        title = request.form.get("title_name")
         review = {
-            "review_header": request.form.get("review_header"),
+            "review_title": request.form.get("review_title"),
             "review_name": request.form.get("review_name"),
-            "review_review": request.form.get("review_review"),
+            "review_review": request.form.get("review_review")
         }
-        mongo.db.reviews.insert_one(review)
+        mongo.db.reviews.insert_one({"title": title, "review": review})
         flash("Review Successfully Added")
         return redirect(url_for("get_titles"))
 

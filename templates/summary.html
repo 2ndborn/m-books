@@ -27,12 +27,13 @@
                     
                         <div class="row">
                             <div class="col s12 center-align">
-                                <!-- Modal Trigger for edit, del & review-->
+                                <!-- Modal Trigger for edit -->
                                 {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
                                 <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
                                 <a href="{{ url_for('delete_title', title_id=title._id) }}" class="waves-effect waves-light btn">Delete</a>
-                                {% endif %}
-                                <a class="waves-effect waves-light btn">Write A Review</a>
+                                {% endif %}                           
+                                <!-- Modal Trigger -->
+                                <Button class="waves-effect waves-light btn modal-trigger" href="#modal2">Write a Review</button>
                             </div>
                         </div>
                     
@@ -110,21 +111,17 @@
         </div>
     </div>
                
-        <div class="row">
-            <div class="col s12 center-align">
-                <!-- Modal Trigger -->
-                <Button class="waves-effect waves-light btn modal-trigger" href="#modal2">Add Review</button>
+        
                 
                 <!-- Modal Structure -->
                 <div id="modal2" class="modal">
-                    <form method="POST" action="{{ url_for('add_review') }}">
+                    {% for title in titles %}
+                    <form method="POST" action="{{ url_for('add_review', title=title) }}" method="POST">
                         <div class="modal-content">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {% for title in titles %}
-                                        <input id="review_header" name="review_header" value="{{ title.title_name }}" type="text" class="validate" required>
-                                        <label for="review_header">Title</label>
-                                    {% endfor %}
+                                    <input id="review_header" name="review_header" value="{{ title.title_name }}" type="text" class="validate" required>
+                                    <label for="review_header">Title</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -147,6 +144,7 @@
                             </div>
                         </div>                                    
                     </form>
+                    {% endfor %}
                 </div>
             </div>
         </div>
