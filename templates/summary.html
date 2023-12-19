@@ -24,19 +24,22 @@
                         <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
                         <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
                     </ul>
-                        {% if session.user or session.user|lower == "admin" %}
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <!-- Modal Trigger for edit -->
-                                {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
-                                <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
-                                <a href="{{ url_for('delete_title', title_id=title._id) }}" class="waves-effect waves-light btn">Delete</a>
-                                {% endif %}
-                                <!-- Modal Trigger -->
-                                <Button class="waves-effect waves-light btn modal-trigger" href="#modal2">Write a Review</button>                                
-                            </div>
+                    {% if session.user or session.user|lower == "admin" %}
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <!-- Modal Trigger for edit -->
+                            {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
+                            <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
+                            <!-- Modal Trigger for edit -->
+                            <Button class="waves-effect waves-light red btn modal-trigger" href="#modal2">Delete</button>
+                            <a href="{{ url_for('delete_title', title_id=title._id) }}" class="waves-effect waves-light btn">Delete</a>
+                            {% endif %}
+                            <!-- Modal Trigger -->
+                            <Button class="waves-effect waves-light btn modal-trigger" href="#modal3">Write a Review</button>                                
                         </div>
-                        {% endif %}
+                    </div>
+                    {% endif %}
+
                     <!-- Modal Structure to edit title-->
                     <div id="modal1" class="modal">
                         <form method="POST" action="{{ url_for('edit_title', title_id=title._id) }}">
@@ -92,6 +95,32 @@
         </div>
     </div>
 
+    <!-- Modal Structure delete -->
+    <div id="modal2" class="modal">
+        {% for title in titles %}
+        <form method="POST" action="{{ url_for('add_review', title=title) }}" method="POST">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col s12">
+                        <h4 class="center-align">Are You Sure?</h4>
+                        <h5 class="center-align">{{title.title_name}} will be permanantly deleted</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
+                            No
+                        </a>
+                        <a href="{{ url_for('delete_title', title_id=title._id) }}" class="btn-large waves-effect waves-light btn">
+                            Yes                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+
     <h4 class="center-align">Reviews</h4>
     
     <div class="row container">
@@ -111,8 +140,8 @@
         </div>
     </div>             
         
-    <!-- Modal Structure -->
-    <div id="modal2" class="modal">
+    <!-- Modal Structure write a review -->
+    <div id="modal3" class="modal">
         {% for title in titles %}
         <form method="POST" action="{{ url_for('add_review', title=title) }}" method="POST">
             <div class="modal-content">

@@ -130,7 +130,7 @@ M.Books is a web application designed that enables its users to search for Japan
 
 ### Fixed Bugs
 
--	** Accessing individual Titles on the Summary page **: I  wanted  to  make  it  so when the user clicks a title, they would be transported to the summary screen with further deals of that title.
+-	**Accessing individual Titles on the Summary page**: I  wanted  to  make  it  so when the user clicks a title, they would be transported to the summary screen with further deals of that title.
 ![Summary Page](static/readme.files/bug_1.1.png)
 However,  what  displayed  was a 404 message.
 ![404 Message](static/readme.files/bug_1.2.png)
