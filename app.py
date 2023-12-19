@@ -181,7 +181,7 @@ def add_review(title):
             mongo.db.reviews.insert_one(
                 {"title_name": title_name, "review": review})
             flash("Review Successfully Added")
-            return redirect(url_for("get_titles", title=title))
+            return redirect(url_for("get_titles", title=title,))
 
 
 @app.route("/delete_title/<title_id>")
