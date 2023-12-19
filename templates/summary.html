@@ -32,7 +32,6 @@
                             <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
                             <!-- Modal Trigger for edit -->
                             <Button class="waves-effect waves-light red btn modal-trigger" href="#modal2">Delete</button>
-                            <a href="{{ url_for('delete_title', title_id=title._id) }}" class="waves-effect waves-light btn">Delete</a>
                             {% endif %}
                             <!-- Modal Trigger -->
                             <Button class="waves-effect waves-light btn modal-trigger" href="#modal3">Write a Review</button>                                
@@ -98,7 +97,6 @@
     <!-- Modal Structure delete -->
     <div id="modal2" class="modal">
         {% for title in titles %}
-        <form method="POST" action="{{ url_for('add_review', title=title) }}" method="POST">
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12">
@@ -106,6 +104,7 @@
                         <h5 class="center-align">{{title.title_name}} will be permanantly deleted</h5>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col s12 center-align">
                         <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
@@ -117,7 +116,6 @@
                     </div>
                 </div>
             </div>
-        </form>
         {% endfor %}
     </div>
 

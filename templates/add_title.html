@@ -3,15 +3,15 @@
 
     <h3 class="center-align">Add Title</h3>
 
-    <div class="row container">
-        <form class="col s12" method="POST" action="{{ url_for('add_title')}}">
+    <div class="row">
+        <form class="col s10 col m8 offset-s1 offset-m2" method="POST" action="{{ url_for('add_title')}}">
             <div class="row card-panel">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <input id="title_name" name="title_name" type="text" minlength="5" maxlength="50" class="validate" required>
                         <label for="title_name">Name of Title</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <input id="title_image" name="title_image" type="url" class="validate" required>
                         <label for="title_image">Image</label>
                     </div>
@@ -49,9 +49,9 @@
         </form>
 
         <!--Add a review-->
-        <h4 class="center-align">Share Your Opinion</h4>
+        <!-- <h4 class="center-align">Share Your Opinion</h4>
 
-        <form method="POST" action="{{ url_for('add_review', ) }}">
+        <form method="POST" action="">
             <div class="row card-panel">        
                 <div class="row">
                     <div class="input-field col s12">
@@ -66,7 +66,7 @@
                     </div>
                 </div>               
             </div>            
-        </form>
+        </form> -->
     </div>
 
 {% endblock %}

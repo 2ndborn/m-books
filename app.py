@@ -164,16 +164,22 @@ def reviews_coll():
 
 @app.route("/add_review/title/<title>", methods=["GET", "POST"])
 def add_review(title):
+    # finds the titles of title and review title
+    title_name = {"title_name": title}
+    review_title = {"review_title": title}
     title = mongo.db.titles.find(title_name)
     review = mongo.db.reviews.find(review_title)
+    # If the request is post all the information is collected
     if request.method == "POST":
         review = {
             "review_title": request.form.get("review_title"),
             "review_name": request.form.get("review_name"),
             "review_review": request.form.get("review_review")
         }
-        if title_name == review_title:
-            mongo.db.reviews.insert_one({"title_name": title_name, "review": review})
+        # if the title name matches the review title
+        if title_name == review["review_title"]:
+            mongo.db.reviews.insert_one(
+                {"title_name": title_name, "review": review})
             flash("Review Successfully Added")
             return redirect(url_for("get_titles", title=title))
 
