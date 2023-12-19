@@ -108,7 +108,7 @@ def signout():
 @app.route("/summary/<titles_id>")
 def summary(titles_id):
     titles = list(mongo.db.titles.find({"_id": ObjectId(titles_id)}))
-    reviews = list(mongo.db.reviews.find())
+    reviews = list(mongo.db.reviews.find({"title._id": ObjectId(titles_id)}))
     return render_template("summary.html", titles=titles, reviews=reviews)
 
 
@@ -164,7 +164,6 @@ def reviews_coll():
 
 @app.route("/add_review/title/<title>", methods=["GET", "POST"])
 def add_review(title):
-    # finds the titles of title and review title
     title_name = {"title_name": title}
     review_title = {"review_title": title}
     title = mongo.db.titles.find(title_name)
@@ -179,9 +178,9 @@ def add_review(title):
         # if the title name matches the review title
         if title_name == review["review_title"]:
             mongo.db.reviews.insert_one(
-                {"title_name": title_name, "review": review})
+                {"title_name": title_name, "title_id": title['_id']})
             flash("Review Successfully Added")
-            return redirect(url_for("get_titles", title=title,))
+            return redirect(url_for("get_titles", title=title))
 
 
 @app.route("/delete_title/<title_id>")

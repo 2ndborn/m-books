@@ -4,7 +4,7 @@
     <h3 class="center-align">Add Title</h3>
 
     <div class="row">
-        <form class="col s10 col m8 offset-s1 offset-m2" method="POST" action="{{ url_for('add_title')}}">
+        <form class="col s10 col m8 offset-s1 offset-m2" method="POST" action="{{ url_for('add_title') }}">
             <div class="row card-panel">
                 <div class="row">
                     <div class="input-field col s12">
@@ -47,26 +47,6 @@
                 </div>
             </div>     
         </form>
-
-        <!--Add a review-->
-        <!-- <h4 class="center-align">Share Your Opinion</h4>
-
-        <form method="POST" action="">
-            <div class="row card-panel">        
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="title_rname" name="title_rname" type="text" minlength="5" maxlength="50" class="validate" placeholder="Optional">
-                        <label for="title_rname">Name Your Review</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="title_review" name="title_review" class="materialize-textarea" placeholder="Optional"></textarea>
-                        <label for="title_review">Write a Review</label>
-                    </div>
-                </div>               
-            </div>            
-        </form> -->
     </div>
 
 {% endblock %}

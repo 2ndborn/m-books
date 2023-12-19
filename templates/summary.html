@@ -141,7 +141,7 @@
     <!-- Modal Structure write a review -->
     <div id="modal3" class="modal">
         {% for title in titles %}
-        <form method="POST" action="{{ url_for('add_review', title=title) }}" method="POST">
+        <form method="POST" action="{{ url_for('add_review', title=title.title_name) }}">
             <div class="modal-content">
                 <div class="row">
                     <div class="input-field col s12">
