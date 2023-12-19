@@ -1,39 +1,149 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome,
+# M.Books
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Project Goals
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+M.Books is a web application designed that enables its users to search for Japanese Manga comic that they would like to read.
 
-## Codeanywhere Reminders
+## User Goals
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+- All users can find Japanese Manga comic to read.
+- Registered users can recommend titles that they are familiar with.
+-	Registered users can add, edit and remove titles to/from the website.
 
-`python3 -m http.server`
+## Business and Development Goals
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+- Earn money on each book purchased via a link from the site.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+## User Stories
 
-`http_server`
+- All users can see Home, Sign-In and Register on the navigation bar.
+- All users will see an opaque background image on every page.
+- Registered/Admin users who have signed in can see Home, Profile, Add Title and Sign Out in their navigation options.
+- Registered/Admin users who have signed in are greeted with a welcome message on their Profile page.
+- Registered/Admin users who have signed in can view all of their added Titles and Reviews on the Profile page.
+- Registered/Admin users who have signed in can toggle between Titles and Review via a toggle switch.
+- All user will be able to search for Manga titles titles using the search bar on the Home page.
+- Users will view a list of Manga titles in alphabetical order.
+- All users who click on a title will be transported to a Summary page where they can learn more.
+- The Summary page will show all users a picture of the title, the year it was published and summary of the storyline.
+- All users can view the reviews of the Manga titles below the summary section.
+- All users that click on the back button will be transported back to the Home page
+- Registered/Admin users will access buttons to Add/Edit/Delete Titles and Reviews.
+- Registered/Admin users that access the Add-Title page will need to add the Title, Year of Release, Story Summary and Upload a picture of the title to add to the database.
+- Registered/Admin users that add a click the Add/Edit a Review button will generate a pop form in the centre of the page that to add/edit the review.
+- Registered/Admin users that click the Delete button will generate a pop-up window asking "Are you sure you want to delete {Title Name}". The user will need to press "Yes" or "No". If the user presses "No" then the window will disappear. If the user presses "Yes" then the record will be deleted redirecting the user to the Profile page and displaying the message "Record Successfully Deleted".
+- Registered/Admin users that press Sign-Out will be redirected to the Sign-In page displaying the message "Successfully Signed Out".
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Features
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+-	**Page Consistency**
+  -	Each page has the “M.Books” header in the top left corner of the page. Clicking on the text transfers the user to the top of the home page.
+  -	Tablet and Mobile users will view the header “M.Books” in the top left corner of the page. Clicking on the text will refresh the home page.
+-	**The Navigation Bar**
+  -	Desktop - Positioned on the right side
+  -	Tablet and Mobile - A burger menu with side navigation.
+  -	Navigation Bar (Un-Registeted Users)
+    -	Each page will have navbar with a Home, Sign-In, Register and Search bar.
+    - Navigation Bar (Registered/Admin Users)
+    - Each page will have a Home, Sign Out, Add-Title, Contact Us.
+- **Background-Image**
+  - Each page will have the same opaque background image.
+- **Home Page**
+		- Search bar at the top of the page that allows visitors to search for a title of interest.
+		- Below the search bar is a list of titles organised alphabetically.
+- **Sign In page**
+  - Two text input areas at the centre of the screen with Username and Password placeholder.
+  - Below is a prompt "New Here?" and a link that says "Register". The link directs the user to the Register page.
+  - Below the prompt is a "Sign In" button.
+- **Registration Page**
+  - Two text input areas at the centre of the screen with Username and Password placeholder.
+  - Below is a prompt "Already Registered?" and a link that says "Sign In". The link directs the user to the Sign In page.
+  - Below the prompt is a "Register" button.
+- **Profile Page**
+  - A toggle switch enabling the user to switch between Titles and Reviews.
+  - Below is a search bar that enables the user to search for Titles/Reviews that they have added. Alternatively the user can just scroll through the list.
+  - Clicking on a title directs the user to the Summary page.
+- Summary Page
+  - Users can view a summary of a manga title
+  - Registered users have the option to add a review.
+  - Registered users have the option to edit/delete Titles and Reviews added by them.
+  - Admin users can add/delete all Titles and Reviews. The can only edit their own.
+- **Add Title Page**
+  - There are 4 input boxes for registered users to complete
+		1.	Title Name
+		2.	Year of Release
+		3.	Summary
+		4.	Provide a picture that relates to the title.
+  -	Below is a "Add Title" button
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+##	Future Features
 
-To log into the Heroku toolbelt CLI:
+- Admin users will be able to Add Genre.
+- Upvoting for each title which will contribute to a top 10 titles feature.
+- Users will be able to reset their password.
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## Typography & Colour
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+- **Typography**
+  - Orbitron is used for the Logo and Navigation options.
+  - Ubuntu is used for everything else.
 
----
+-	**Colour**
+  -	Black
 
-Happy coding!
+## Wireframes
+
+![Home Page](static/readme.files/Home%20Page.png)
+![Register](static/readme.files/register.png)
+![Sign In](static/readme.files/sign-in.png)
+![Sign Out](static/readme.files/sign-out.png)
+![Profile](static/readme.files/profile.png)
+![Summary Page](static/readme.files/summary.png)
+![Add Title](static/readme.files/add-title.png)
+![Navigation](static/readme.files/nav.png)
+![Templates](static/readme.files/template.png)
+![Write a Review](static/readme.files/write_edit%20_review.png)
+![Delete](static/readme.files/delete.png)
+
+## Technology
+
+- [Codeanywhere](https://app.codeanywhere.com/) to build the repository.
+- [GitHub](https://github.com/Code-Institute-Org/ci-full-template) to push changes to the repository.
+- [Heroku](https://id.heroku.com/login) to deploy the application.
+- [W3C](https://validator.w3.org/) to validate the HTML and CSS code
+- [jslint](https://www.jslint.com/) to validate JavaScript to validate the JavaScript code.
+- [w3schools](https://www.w3schools.com/jsreF/prop_text_disabled.asp)
+- [MDN web docs](https://developer.mozilla.org/en-US/)
+- [Balsamiq](https://balsamiq.com/) for creating the wireframe
+- [Font Awesome](https://fontawesome.com/v4/) for the icons
+- [Google fonts](https://fonts.google.com/) to search for the right fonts for the website
+- [Materialize](https://materializecss.com/)  to create forms and buttons.
+- Chrome Developer Tools for device testing.
+- Google Lighthouse to text site performance.
+
+## Testing
+
+### Code Validation
+
+### Test Cases
+
+### Fixed Bugs
+
+-	** Accessing individual Titles on the Summary page **: I  wanted  to  make  it  so when the user clicks a title, they would be transported to the summary screen with further deals of that title.
+![Summary Page](static/readme.files/bug_1.1.png)
+However,  what  displayed  was a 404 message.
+![404 Message](static/readme.files/bug_1.2.png)
+I rewatched the course content “Bind the data to the Edit_task form” and with some trial & error and the help of Jinja I was able to deduce that because href in titles.html was wrapped in a for loop I needed to change titles.id to title.id. This solved the problem.
+![Issue](static/readme.files/bug_1.3.png)
+![app.py file](static/readme.files/bug_1.4.png)
+![Fix](static/readme.files/bug_1.5.png)
+-
+
+### Browser Testing
+
+## Deployment
+
+### Codeanywhere
+
+### Heroku
