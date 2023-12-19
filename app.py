@@ -164,16 +164,18 @@ def reviews_coll():
 
 @app.route("/add_review/title/<title>", methods=["GET", "POST"])
 def add_review(title):
+    title = mongo.db.titles.find(title_name)
+    review = mongo.db.reviews.find(review_title)
     if request.method == "POST":
-        title = request.form.get("title_name")
         review = {
             "review_title": request.form.get("review_title"),
             "review_name": request.form.get("review_name"),
             "review_review": request.form.get("review_review")
         }
-        mongo.db.reviews.insert_one({"title": title, "review": review})
-        flash("Review Successfully Added")
-        return redirect(url_for("get_titles"))
+        if title_name == review_title:
+            mongo.db.reviews.insert_one({"title_name": title_name, "review": review})
+            flash("Review Successfully Added")
+            return redirect(url_for("get_titles", title=title))
 
 
 @app.route("/delete_title/<title_id>")

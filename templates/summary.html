@@ -24,19 +24,19 @@
                         <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
                         <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
                     </ul>
-                    
+                        {% if session.user or session.user|lower == "admin" %}
                         <div class="row">
                             <div class="col s12 center-align">
                                 <!-- Modal Trigger for edit -->
                                 {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
                                 <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
                                 <a href="{{ url_for('delete_title', title_id=title._id) }}" class="waves-effect waves-light btn">Delete</a>
-                                {% endif %}                           
+                                {% endif %}
                                 <!-- Modal Trigger -->
-                                <Button class="waves-effect waves-light btn modal-trigger" href="#modal2">Write a Review</button>
+                                <Button class="waves-effect waves-light btn modal-trigger" href="#modal2">Write a Review</button>                                
                             </div>
                         </div>
-                    
+                        {% endif %}
                     <!-- Modal Structure to edit title-->
                     <div id="modal1" class="modal">
                         <form method="POST" action="{{ url_for('edit_title', title_id=title._id) }}">
@@ -109,43 +109,40 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
-               
+    </div>             
         
-                
-                <!-- Modal Structure -->
-                <div id="modal2" class="modal">
-                    {% for title in titles %}
-                    <form method="POST" action="{{ url_for('add_review', title=title) }}" method="POST">
-                        <div class="modal-content">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="review_header" name="review_header" value="{{ title.title_name }}" type="text" class="validate" required>
-                                    <label for="review_header">Title</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="review_name" name="review_name" type="text" minlength="5" maxlength="50" class="validate"
-                                        required>
-                                    <label for="review_name">Name Your Review</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="review_review" name="review_review" class="materialize-textarea" required></textarea>
-                                    <label for="review_review">Write a Review</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 center-align">
-                                    <button type="submit" class="btn-large modal-close">Add Review</button>
-                                </div>
-                            </div>
-                        </div>                                    
-                    </form>
-                    {% endfor %}
+    <!-- Modal Structure -->
+    <div id="modal2" class="modal">
+        {% for title in titles %}
+        <form method="POST" action="{{ url_for('add_review', title=title) }}" method="POST">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="review_header" name="review_header" value="{{ title.title_name }}" type="text" class="validate" required>
+                        <label for="review_header">Title</label>
+                    </div>
                 </div>
-            </div>
-        </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="review_name" name="review_name" type="text" minlength="5" maxlength="50" class="validate"
+                            required>
+                        <label for="review_name">Name Your Review</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="review_review" name="review_review" class="materialize-textarea" required></textarea>
+                        <label for="review_review">Write a Review</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="btn-large modal-close">Add Review</button>
+                    </div>
+                </div>
+            </div>                                    
+        </form>
+        {% endfor %}
+    </div>
+
 {% endblock %}
