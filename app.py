@@ -157,25 +157,21 @@ def edit_title(title_id):
     return render_template("summary.html", title=title)
 
 
-@app.route("/add_review/title/<title>", methods=["GET", "POST"])
-def add_review(title):
-    title_name = {"title_name": title}
-    review_title = {"review_title": title}
-    title = mongo.db.titles.find(title_name)
-    review = mongo.db.reviews.find(review_title)
-    # If the request is post all the information is collected
+@app.route("/add_review/<title_id>/title_id", methods=["GET", "POST"])
+def add_review(title_id):
     if request.method == "POST":
         review = {
             "review_title": request.form.get("review_title"),
             "review_name": request.form.get("review_name"),
-            "review_review": request.form.get("review_review")
+            "review_review": request.form.get("review_review"),
+            "created_by": session["user"],
+            "title_id": title_id
         }
-        # if the title name matches the review title
-        if title_name == review["review_title"]:
-            mongo.db.reviews.insert_one(
-                {"title_name": title_name, "title_id": title['_id']})
-            flash("Review Successfully Added")
-            return redirect(url_for("get_titles", title=title))
+        title_id = mongo.db.titles.find_one({"_id": ObjectId(title_id)})
+        if review["review_title"] == title_id["title_name"]:
+            mongo.db.reviews.insert_one(review)
+        flash("Review Added")
+        return redirect(url_for("get_titles", title_id=title_id))
 
 
 @app.route("/delete_title/<title_id>")
