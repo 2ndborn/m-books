@@ -136,30 +136,25 @@ def add_title():
 @app.route("/edit_title/<title_id>", methods=["GET", "POST"])
 def edit_title(title_id):
     if request.method == "POST":
-        submit = {
-            "title_name": request.form.get("title_name"),
-            "title_year": request.form.get("title_year"),
-            "title_chapters": request.form.get("title_chapters"),
-            "title_mangaka": request.form.get("title_mangaka"),
-            "title_story": request.form.get("title_story"),
-            "title_image": request.form.get("title_image"),
-        }
-        mongo.db.titles.update_many(
-            {"_id": ObjectId(title_id)}, {"$set": submit})
-        flash("Title Successfully Updated")
+        creator = mongo.db.titles.find_one({"created_by": session["user"]})
+        if creator:
+            submit = {
+                "title_name": request.form.get("title_name"),
+                "title_year": request.form.get("title_year"),
+                "title_chapters": request.form.get("title_chapters"),
+                "title_mangaka": request.form.get("title_mangaka"),
+                "title_story": request.form.get("title_story"),
+                "title_image": request.form.get("title_image"),
+                }
+            mongo.db.titles.update_many(
+                {"_id": ObjectId(title_id)}, {"$set": submit})
+            flash("Title Successfully Updated")
+        else:
+            flash("Cannot be edited")
         return redirect(url_for("get_titles"))
 
     title = mongo.db.titles.find_one({"_id": ObjectId(title_id)})
     return render_template("summary.html", title=title)
-
-
-@app.route("/reviews_coll")
-def reviews_coll():
-    reviews = []
-    title_name = mongo.db.titles.find(title_name)
-    review_header = mongo.db.reviews.find(review_header)
-    if title_name == review_header:
-        reviews.append(object)
 
 
 @app.route("/add_review/title/<title>", methods=["GET", "POST"])
@@ -185,8 +180,12 @@ def add_review(title):
 
 @app.route("/delete_title/<title_id>")
 def delete_title(title_id):
-    mongo.db.titles.delete_one({"_id": ObjectId(title_id)})
-    flash("Title Successfully Deleted")
+    creator = mongo.db.titles.find_one({"created_by": session["user"]})
+    if creator:
+        mongo.db.titles.delete_one({"_id": ObjectId(title_id)})
+        flash("Title Successfully Deleted")
+    else:
+        flash("Unsuccessful Deletion")
     return redirect(url_for("get_titles"))
 
 
