@@ -108,7 +108,7 @@ def signout():
 @app.route("/summary/<titles_id>")
 def summary(titles_id):
     titles = list(mongo.db.titles.find({"_id": ObjectId(titles_id)}))
-    reviews = list(mongo.db.reviews.find({"title._id": ObjectId(titles_id)}))
+    reviews = list(mongo.db.reviews.find({"title_id": ObjectId(titles_id)}))
     return render_template("summary.html", titles=titles, reviews=reviews)
 
 
@@ -157,7 +157,7 @@ def edit_title(title_id):
     return render_template("summary.html", title=title)
 
 
-@app.route("/add_review/<title_id>/title_id", methods=["GET", "POST"])
+@app.route("/add_review/<title_id>", methods=["GET", "POST"])
 def add_review(title_id):
     if request.method == "POST":
         review = {
@@ -167,9 +167,7 @@ def add_review(title_id):
             "created_by": session["user"],
             "title_id": title_id
         }
-        title_id = mongo.db.titles.find_one({"_id": ObjectId(title_id)})
-        if review["review_title"] == title_id["title_name"]:
-            mongo.db.reviews.insert_one(review)
+        mongo.db.reviews.insert_one(review)
         flash("Review Added")
         return redirect(url_for("get_titles", title_id=title_id))
 

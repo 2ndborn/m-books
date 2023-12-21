@@ -122,19 +122,19 @@
     <h4 class="center-align">Reviews</h4>
     
     <div class="row container">
-        <div class="col s12 container">            
-            <div class="col s10 offset-s1 card-panel">
-                {% for review in reviews %}
-                    <ul class="col s12 collection with-header" method="POST" action="" >                    
-                        <h6><strong>{{review.review_name}}</strong></h6>
-                        <p>{{review.review_review}}</p>
-                    {% if session.user %}
-                        <a class="waves-effect waves-light btn">Edit</a>
-                        <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn">Delete</a>
-                    {% endif %}
-                    </ul>
-                {% endfor %}
+        <div class="col s12 container">
+            {% for review in reviews %}
+            <div class="col s10 offset-s1 card-panel" method="POST" action="{{ url_for('summary', titles_id=titles._id)}}">
+                <ul class="col s12 collection with-header">                 
+                    <h6><strong>{{review.review_name}}</strong></h6>
+                    <p>{{review.review_review}}</p>
+                {% if session.user %}
+                    <a class="waves-effect waves-light btn">Edit</a>
+                    <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn">Delete</a>
+                {% endif %}
+                </ul>
             </div>
+            {% endfor %}
         </div>
     </div>             
         
@@ -145,9 +145,9 @@
             <div class="modal-content">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="review_header" name="review_header" value="{{ title._id }}" type="text" class="validate"
+                        <input id="title_id" name="title_id" value="{{ title._id }}" type="text" class="validate"
                             required>
-                        <label for="review_header">Title</label>
+                        <label for="title_id">ObjectId</label>
                     </div>
                 </div>
                 <div class="row">
