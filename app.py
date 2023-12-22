@@ -165,7 +165,7 @@ def add_review(title_id):
             "review_name": request.form.get("review_name"),
             "review_review": request.form.get("review_review"),
             "created_by": session["user"],
-            "title_id": title_id
+            "title_id": ObjectId(title_id)
         }
         mongo.db.reviews.insert_one(review)
         flash("Review Added")
