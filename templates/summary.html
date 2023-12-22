@@ -128,8 +128,10 @@
                 <ul class="col s12 collection with-header">                 
                     <h6><strong>{{review.review_name}}</strong></h6>
                     <p>{{review.review_review}}</p>
+                    {% if session.user == review.created_by %}
                     <a class="waves-effect waves-light btn">Edit</a>
                     <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn">Delete</a>
+                    {% endif %}
                 </ul>
             </div>
             {% endfor %}
