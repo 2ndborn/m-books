@@ -145,7 +145,7 @@ def edit_title(title_id):
                 "title_mangaka": request.form.get("title_mangaka"),
                 "title_story": request.form.get("title_story"),
                 "title_image": request.form.get("title_image"),
-                }
+            }
             mongo.db.titles.update_many(
                 {"_id": ObjectId(title_id)}, {"$set": submit})
             flash("Title Successfully Updated")
@@ -172,6 +172,26 @@ def add_review(title_id):
         return redirect(url_for("get_titles", title_id=title_id))
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        creator = mongo.db.titles.find_one({"created_by": session["user"]})
+        if creator:
+            submit = {
+                "review_title": request.form.get("review_title"),
+                "review_name": request.form.get("review_name"),
+                "review_review": request.form.get("review_review"),
+                "created_by": session["user"],
+                "title_id": ObjectId(title_id)
+            }
+            mongo.db.reviews.update_many(
+                {"_id": ObjectId(review_id)}, {"$set": submit})
+            flash("Review Successfully Updated")
+        else:
+            flash("Cannot be edited")
+        return redirect(url_for("get_titles"))
+
+
 @app.route("/delete_title/<title_id>")
 def delete_title(title_id):
     creator = mongo.db.titles.find_one({"created_by": session["user"]})
@@ -185,8 +205,12 @@ def delete_title(title_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
-    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
-    flash("Title Successfully Deleted")
+    creator = mongo.db.reviews.find_one({"created_by": session["user"]})
+    if creator:
+        mongo.db.reviews.delete_one({"_id": ObjectId(title_id)})
+        flash("Review Successfully Deleted")
+    else:
+        flash("Unsuccessful Deletion")
     return redirect(url_for("get_titles"))
 
 

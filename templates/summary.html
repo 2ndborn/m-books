@@ -128,9 +128,9 @@
                 <ul class="col s12 collection with-header">                 
                     <h6><strong>{{review.review_name}}</strong></h6>
                     <p>{{review.review_review}}</p>
-                    {% if session.user == review.created_by %}
-                    <a class="waves-effect waves-light btn">Edit</a>
-                    <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn">Delete</a>
+                    {% if session.user|lower == review.created_by|lower %}
+                        <Button class="waves-effect waves-light btn modal-trigger" href="#modal4">Edit</button>
+                        <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect red waves-light btn">Delete</a>
                     {% endif %}
                 </ul>
             </div>
@@ -176,6 +176,37 @@
                     </div>
                 </div>
             </div>                                    
+        </form>
+        {% endfor %}
+    </div>
+
+    <!-- Modal Structure to edit review-->
+    <div id="modal4" class="modal">
+        {% for review in reviews %}
+        <form method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="review_name" name="review_name" type="text" value="{{review.review_name}}" minlength="5"
+                            maxlength="50" class="validate" required>
+                        <label for="review_name">Name of Review</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="review_review" name="review_review" type="text" value="{{review.review_review}}" class="validate"
+                            required>
+                        <label for="review_review">Review</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn-large modal-close">Complete</button>
+                    </div>
+                </div>
+            </div>
         </form>
         {% endfor %}
     </div>
