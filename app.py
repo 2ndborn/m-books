@@ -123,7 +123,7 @@ def add_title():
         title = {
             "title_name": request.form.get("title_name"),
             "title_year": request.form.get("title_year"),
-            "title_chapters": request.form.get("title_chapters"),
+            "title_status": request.form.get("title_status"),
             "title_mangaka": request.form.get("title_mangaka"),
             "title_story": request.form.get("title_story"),
             "title_image": request.form.get("title_image"),
@@ -146,7 +146,7 @@ def edit_title(title_id):
             submit = {
                 "title_name": request.form.get("title_name"),
                 "title_year": request.form.get("title_year"),
-                "title_chapters": request.form.get("title_chapters"),
+                "title_status": request.form.get("title_status"),
                 "title_mangaka": request.form.get("title_mangaka"),
                 "title_story": request.form.get("title_story"),
                 "title_image": request.form.get("title_image"),
@@ -183,7 +183,6 @@ def add_review(title_id):
             mongo.db.reviews.insert_one(review)
             flash("Review Added")
         return redirect(url_for("get_titles", title_id=title_id))
-
 
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])

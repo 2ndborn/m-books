@@ -5,4 +5,5 @@ $(document).ready(function () {
         outDuration: "300" 
     });
     $('.modal').modal();
+    $('select').formSelect();
 });

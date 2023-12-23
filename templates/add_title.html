@@ -18,14 +18,17 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="title_year" name="title_year" type="number" minlength="4" maxlength="4" class="validate" required>
+                        <input id="title_year" name="title_year" type="text" minlength="4" maxlength="4" class="validate" required>
                         <label for="title_year">Year of Release</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="title_chapters" name="title_chapters" type="number" class="validate" required>
-                        <label for="title_chapters">Chapters</label>
+                        <select id="title_status" name="title_status" class="validate" required>
+                            <option value="title_status" disabled selected>Choose Category</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

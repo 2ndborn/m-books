@@ -4,7 +4,7 @@
     <h3 class="center-align">Manga Book List</h3>
 
     <div class="row">
-        <form action="{{ url_for('search') }}" method="POST" class="s10 col m8 offset-s1 offset-m2 card-panel">
+        <form action="{{ url_for('search') }}" method="POST" class="col s10 col xl8 offset-s1 offset-xl2 card-panel">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12 m8">
                     <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
@@ -14,7 +14,7 @@
                 <div class="col s12 m4">
                     <a href="{{ url_for('get_titles') }}" class="red btn">Reset</a>
                     <button type="submit" class="light-blue btn">
-                        <i class="fas fa-search left"></i>Search
+                        Search
                     </button>
                 </div>
             </div>
@@ -23,7 +23,7 @@
     
     {% if titles|length > 0 %}
     <div class="row">
-        <div class="col s10 col m8 offset-s1 offset-m2 card-panel">
+        <div class="col s10 col xl8 offset-s1 offset-xl2 card-panel">
             <div class="col s12 collection">
                 {% for title in titles %}
                     <a href="{{ url_for('summary', titles_id=title._id) }}" class="collection-item">{{title.title_name}}</a>                    
