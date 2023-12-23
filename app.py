@@ -112,6 +112,11 @@ def summary(titles_id):
     return render_template("summary.html", titles=titles, reviews=reviews)
 
 
+@app.route("/get_review/<review_id>")
+def review_id(review_id):
+    review = mongo.db.reviews.find({"_id": ObjectId(review_id)})
+
+
 @app.route("/add_title", methods=["GET", "POST"])
 def add_title():
     if request.method == "POST":
@@ -160,13 +165,20 @@ def edit_title(title_id):
 @app.route("/add_review/<title_id>", methods=["GET", "POST"])
 def add_review(title_id):
     if request.method == "POST":
-        review = {
-            "review_title": request.form.get("review_title"),
-            "review_name": request.form.get("review_name"),
-            "review_review": request.form.get("review_review"),
-            "created_by": session["user"],
-            "title_id": ObjectId(title_id)
-        }
+        # check if the user has reviewed title before
+        username = mongo.db.users.find_one("username")
+        creator = mongo.db.reviews.find_one("created_by")
+        if username == creator:
+            flash("You have already reviewed this title.")
+            return redirect(url_for("get_titles", title_id=title_id))
+        else:
+            review = {
+                "review_title": request.form.get("review_title"),
+                "review_name": request.form.get("review_name"),
+                "review_review": request.form.get("review_review"),
+                "created_by": session["user"],
+                "title_id": ObjectId(title_id)
+            }
         mongo.db.reviews.insert_one(review)
         flash("Review Added")
         return redirect(url_for("get_titles", title_id=title_id))
@@ -175,14 +187,11 @@ def add_review(title_id):
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
-        creator = mongo.db.titles.find_one({"created_by": session["user"]})
+        creator = mongo.db.reviews.find_one({"created_by": session["user"]})
         if creator:
             submit = {
-                "review_title": request.form.get("review_title"),
                 "review_name": request.form.get("review_name"),
-                "review_review": request.form.get("review_review"),
-                "created_by": session["user"],
-                "title_id": ObjectId(title_id)
+                "review_review": request.form.get("review_review")
             }
             mongo.db.reviews.update_many(
                 {"_id": ObjectId(review_id)}, {"$set": submit})
@@ -207,7 +216,7 @@ def delete_title(title_id):
 def delete_review(review_id):
     creator = mongo.db.reviews.find_one({"created_by": session["user"]})
     if creator:
-        mongo.db.reviews.delete_one({"_id": ObjectId(title_id)})
+        mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
         flash("Review Successfully Deleted")
     else:
         flash("Unsuccessful Deletion")
