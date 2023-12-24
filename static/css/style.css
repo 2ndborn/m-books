@@ -13,6 +13,10 @@ body {
     margin-left: 10px;
 }
 
+.mob-search-btn {
+    display: none;
+}
+
 .back-button {
     margin-top: 10px;
 }
@@ -22,3 +26,15 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 } */
+
+/******************************Media Queries**********************************/
+
+@media (max-width: 540px) {
+    .search-btn {
+        display: none;
+    }
+
+    .mob-search-btn {
+        display: contents;
+    }
+}

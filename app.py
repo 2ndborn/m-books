@@ -167,8 +167,8 @@ def add_review(title_id):
     if request.method == "POST":
         # check if the user has reviewed title before
         username = mongo.db.users.find_one({"username": session["user"]})
-        creator = mongo.db.reviews.find_one(
-            {"created_by": session["user"], "title_id": ObjectId(title_id)})
+        creator = (mongo.db.reviews.find_one(
+            {"created_by": session["user"], "title_id": ObjectId(title_id)}))
         if creator is not None:
             flash("You have already reviewed this title.")
             return redirect(url_for("get_titles", title_id=title_id))
