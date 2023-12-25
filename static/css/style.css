@@ -44,8 +44,23 @@ body {
     }
 }
 
+@media (max-width: 360px) {
+    .title-btn button {
+        font-size: 10px;
+    }
+}
+
 @media (max-width: 280px) {
     .sidenav {
         width: 200px;
+    }
+
+    .nav-wrapper a {
+        font-size: 1.7rem;
+        margin-left: 0;
+    }
+
+    .title-btn button {
+        font-size: 7px;
     }
 }
