@@ -44,6 +44,18 @@ body {
     }
 }
 
+@media (max-width: 430px) {
+    .collection.with-header .collection-header {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .collection.with-header .collection-item {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
 @media (max-width: 360px) {
     .title-btn button {
         font-size: 10px;
