@@ -3,11 +3,11 @@
     
     <div class="row">
         <div class="col s12 back-button">
-            <a href="{{ url_for('get_titles') }}" class="waves-effect waves-light btn"><i class="fa-solid fa-arrow-left"></i></a>            
+            <a href="{{ url_for('get_titles') }}" class="waves-effect waves-light cyan btn"><i class="fa-solid fa-arrow-left"></i></a>            
         </div>
     </div>
 
-    <h3 class="center-align">Summary</h3>
+    <h3 class="center-align cyan-text text-accent-1">Summary</h3>
 
     <div class="row container">
         <div class="col s12 container" method="POST" action="{{ url_for('summary', titles_id=titles._id) }}">
@@ -17,21 +17,21 @@
                         src="{{title.title_image}}">            
                     <ul class="col s12 collection with-header">
                         <li class="collection-header">
-                            <h4><strong>{{title.title_name}}</strong></h4>
+                            <h4 class="cyan-text text-darken-4"><strong>{{title.title_name}}</strong></h4>
                         </li>
-                        <li class="collection-item"><strong>Year Release: </strong>{{title.title_year}}</li>
-                        <li class="collection-item"><strong>Status: </strong>{{title.title_status}}</li>
-                        <li class="collection-item"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
-                        <li class="collection-item"><strong>Storyline: </strong>{{title.title_story}}</li>
+                        <li class="collection-item cyan-text text-darken-4"><strong>Year Release: </strong>{{title.title_year}}</li>
+                        <li class="collection-item cyan-text text-darken-4"><strong>Status: </strong>{{title.title_status}}</li>
+                        <li class="collection-item cyan-text text-darken-4"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
+                        <li class="collection-item cyan-text text-darken-4"><strong>Storyline: </strong>{{title.title_story}}</li>
                     </ul>
                     {% if session.user or session.user|lower == "admin" %}
                     <div class="row">
                         <div class="col s12 center-align title-btn">
                             <!-- Modal Trigger for edit -->
                             {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
-                            <Button class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</button>
+                            <Button class="cyan btn modal-trigger" href="#modal1">Edit</button>
                             <!-- Modal Trigger for edit -->
-                            <Button class="waves-effect waves-light red btn modal-trigger" href="#modal2">Delete</button>
+                            <Button class="pink accent-2 btn modal-trigger" href="#modal2">Delete</button>
                             {% endif %}
                             <!-- Modal Trigger -->
                             <Button class="waves-effect waves-light btn modal-trigger" href="#modal3" hidden>Write a Review</button>                              
@@ -110,10 +110,10 @@
                 
                 <div class="row">
                     <div class="col s12 center-align">
-                        <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
+                        <a href="{{ url_for('get_titles') }}" class="btn-large pink accent-2 text-shadow modal-close">
                             No
                         </a>
-                        <a href="{{ url_for('delete_title', title_id=title._id) }}" class="btn-large waves-effect waves-light btn">
+                        <a href="{{ url_for('delete_title', title_id=title._id) }}" class="btn-large cyan btn">
                             Yes                            
                         </a>
                     </div>
@@ -122,19 +122,19 @@
         {% endfor %}
     </div>
 
-    <h4 class="center-align">Reviews</h4>
+    <h4 class="center-align cyan-text text-accent-1">Reviews</h4>
 
     <div class="row container">
         <div class="col s12 container">
             {% for review in reviews %}
             <div class="col s12 col m10 offset-m1 card-panel" method="POST" action="{{ url_for('summary', titles_id=titles._id)}}">
-                <ul class="col s12 collection with-header">                 
+                <ul class="col s12 collection with-header cyan-text text-darken-4">                 
                     <h6><strong>{{review.review_name}}</strong></h6>
                     <p>{{review.review_review}}</p>
                     {% if session.user|lower == review.created_by|lower or session.user == "admin" %}
                     <div class="row center-align">
-                        <Button class="waves-effect waves-light btn ">Edit</button>
-                        <button class="waves-effect red waves-light btn modal-trigger" href="#modal5">Delete</a>
+                        <Button class="cyan btn modal-trigger" href="#modal4">Edit</button>
+                        <button class="pink accent-2 btn modal-trigger" href="#modal5">Delete</a>
                     </div>
                     {% endif %}
                 </ul>
@@ -195,7 +195,7 @@
                         <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
                             Cancel
                         </a>
-                        <button type="submit" class="btn-large modal-close">Complete</button>
+                        <button type="submit" class="btn-large cyan modal-close">Complete</button>
                     </div>
                 </div>
                 {% endif %}
@@ -218,11 +218,11 @@
     
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
+                    <a href="{{ url_for('get_titles') }}" class="btn-large pink accent-2 text-shadow modal-close">
                         No
                     </a>
                     <a href="{{ url_for('delete_review', review_id=review._id) }}"
-                        class="btn-large waves-effect waves-light btn">
+                        class="btn-large cyan">
                         Yes
                     </a>
                 </div>
