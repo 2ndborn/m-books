@@ -8,6 +8,11 @@
 
 body {
     font-family: "ubuntu", sans-serif;
+    background-image: url("/static/images/hero_image.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-blend-mode: lighten;
 }
 
 .brand-logo {
@@ -21,12 +26,6 @@ body {
 .back-button {
     margin-top: 10px;
 }
-
-/* body {
-    background-image: url("/static/images/hero_image.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-} */
 
 /******************************Media Queries**********************************/
 

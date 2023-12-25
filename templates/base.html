@@ -14,15 +14,16 @@
     <title>M-Books</title>
 </head>
 <body>
+<div id="hero-image">
 
     <header>
 
-        <nav class="nav-extended grey darken-3 nav-style">
+        <nav class="nav-extended black nav-style">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_titles') }}" class="brand-logo nav-font">M-Books</a>
+                <a href="{{ url_for('get_titles') }}" class="brand-logo nav-font pink-text">M-Books</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down nav-font">
-                    <li><a href="{{ url_for('get_titles') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_titles') }}" class="cyan-text text-lighten-1">Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="{{ url_for('add_title') }}">Add Title</a></li>
@@ -34,6 +35,7 @@
                 </ul>
             </div>
         </nav>
+        <hr>
         
         <!--Mobile Side Navigation-->
         <ul class="sidenav" id="mobile-demo">
@@ -50,7 +52,7 @@
         </ul>
 
     </header>
-
+    
     <section>
         <!--flash messages-->
         {% with messages = get_flashed_messages() %}
@@ -76,5 +78,6 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}
+</div>
 </body>
 </html>
