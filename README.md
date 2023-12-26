@@ -9,7 +9,7 @@ M.Books is a web application designed that enables its users to search for Japan
 
 - All users can find Japanese Manga comic to read.
 - Registered users can recommend titles that they are familiar with.
--	Registered users can add, edit and remove titles to/from the website.
+- Registered users can add, edit and remove titles to/from the website.
 
 ## Business and Development Goals
 
@@ -44,7 +44,7 @@ M.Books is a web application designed that enables its users to search for Japan
   -	Desktop - Positioned on the right side
   -	Tablet and Mobile - A burger menu with side navigation.
   -	Navigation Bar (Un-Registeted Users)
-    -	Each page will have navbar with a Home, Sign-In, Register and Search bar.
+    - Each page will have navbar with a Home, Sign-In, Register and Search bar.
     - Navigation Bar (Registered/Admin Users)
     - Each page will have a Home, Sign Out, Add-Title, Contact Us.
 - **Background-Image**
@@ -94,17 +94,17 @@ M.Books is a web application designed that enables its users to search for Japan
 
 ## Wireframes
 
-![Home Page](static/readme.files/Home%20Page.png)
-![Register](static/readme.files/register.png)
-![Sign In](static/readme.files/sign-in.png)
-![Sign Out](static/readme.files/sign-out.png)
-![Profile](static/readme.files/profile.png)
-![Summary Page](static/readme.files/summary.png)
-![Add Title](static/readme.files/add-title.png)
-![Navigation](static/readme.files/nav.png)
-![Templates](static/readme.files/template.png)
-![Write a Review](static/readme.files/write_edit%20_review.png)
-![Delete](static/readme.files/delete.png)
+![Home Page](readme.files/Home%20Page.png)
+![Register](readme.files/register.png)
+![Sign In](readme.files/sign-in.png)
+![Sign Out](readme.files/sign-out.png)
+![Profile](readme.files/profile.png)
+![Summary Page](readme.files/summary.png)
+![Add Title](readme.files/add-title.png)
+![Navigation](readme.files/nav.png)
+![Templates](readme.files/template.png)
+![Write a Review](readme.files/write_edit%20_review.png)
+![Delete](readme.files/delete.png)
 
 ## Technology
 
@@ -119,6 +119,7 @@ M.Books is a web application designed that enables its users to search for Japan
 - [Font Awesome](https://fontawesome.com/v4/) for the icons
 - [Google fonts](https://fonts.google.com/) to search for the right fonts for the website
 - [Materialize](https://materializecss.com/)  to create forms and buttons.
+- [MongoDB](https://mongodb.com) for the database.
 - Chrome Developer Tools for device testing.
 - Google Lighthouse to text site performance.
 
@@ -131,14 +132,18 @@ M.Books is a web application designed that enables its users to search for Japan
 ### Fixed Bugs
 
 -	**Accessing individual Titles on the Summary page**: I  wanted  to  make  it  so when the user clicks a title, they would be transported to the summary screen with further deals of that title.
-![Summary Page](static/readme.files/bug_1.1.png)
+![Summary Page](readme.files/bug_1.1.png)
 However,  what  displayed  was a 404 message.
-![404 Message](static/readme.files/bug_1.2.png)
+![404 Message](readme.files/bug_1.2.png)
 I rewatched the course content “Bind the data to the Edit_task form” and with some trial & error and the help of Jinja I was able to deduce that because href in titles.html was wrapped in a for loop I needed to change titles.id to title.id. This solved the problem.
 ![Issue](static/readme.files/bug_1.3.png)
-![app.py file](static/readme.files/bug_1.4.png)
-![Fix](static/readme.files/bug_1.5.png)
--	**Getting related reviews to show up on the Summary Page:** I wanted reviews to show up on the summary page only if they related to the book title. At first on clicking a title, all of the reviews from the reviews dictionary were being pulled, which is the opposite of what I wanted. I watched a video on YouTube <https://youtu.be/rtYoUDEz4wo?si=yXGBtvS9Ege95-tN> that helped me understand I could make the title ObjectId part of the review data. Then I could use the ObjectId as a parameter to call all the reviews related to a specific book title. Initially, my @app.route(“/summary”) was set up to find ObjectId(titles_id), however, the  @app.route(“/add_review”) review variable was adding “title_id”: title_id. When the summary function was being called the entry couldn’t be found because it didn’t exist, therefore nothing happened. I put my frustrations to one side and focused on other parts of the application. I came back a looked at the code and saw where the error was. I changed the title_id in the review variable in the @app.route(“/summary”) function to add “title_id”: ObjectId(title_id). This immediately solved the problem.
+![app.py file](readme.files/bug_1.4.png)
+![Fix](readme.files/bug_1.5.png)
+-	**Getting related reviews to show up on the Summary Page:** I wanted reviews to show up on the summary page only if they related to the book title. At first on clicking a title, all of the reviews from the reviews dictionary were being pulled, which is the opposite of what I wanted. I watched a video on [YouTube](https://youtu.be/rtYoUDEz4wo?si=yXGBtvS9Ege95-tN) that helped me understand I could make the title ObjectId part of the review data. Then I could use the ObjectId as a parameter to call all the reviews related to a specific book title.
+![Summary](readme.files/bug_2.1.png)Initially, my @app.route(“/summary”) was set up to find ObjectId(titles_id), however, the  @app.route(“/add_review”) review variable was adding “title_id”: title_id.
+![add_review](readme.files/bug_2.2.png) When the summary function was being called the entry couldn’t be found because it didn’t exist, therefore nothing happened. I put my frustrations to one side and focused on other parts of the application. I came back a looked at the code and saw where the error was.
+![fix](readme.files/bug_2.3.png)
+I changed the title_id in the review variable in the @app.route(“/summary”) function to add “title_id”: ObjectId(title_id). This immediately solved the problem.
 
 ### Browser Testing
 
