@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_titles")
 def get_titles():
-    titles = list(mongo.db.titles.find())
+    titles = list(mongo.db.titles.find().sort("category_name", 1))
     return render_template("titles.html", titles=titles)
 
 
@@ -70,7 +70,7 @@ def signin():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Greetings! {}".format(request.form.get("username")))
+                flash("Welcome {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
             else:
                 # incorrect password entered
