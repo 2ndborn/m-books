@@ -3,7 +3,7 @@
     
     <div class="row">
         <div class="col s12 back-button">
-            <a href="{{ url_for('get_titles') }}" class="waves-effect waves-light cyan btn"><i class="fa-solid fa-arrow-left"></i></a>            
+            <a href="{{ url_for('get_titles') }}" class="waves-effect waves-light btn cyan"><i class="fa-solid fa-arrow-left"></i></a>            
         </div>
     </div>
 
@@ -29,12 +29,12 @@
                         <div class="col s12 center-align title-btn">
                             <!-- Modal Trigger for edit -->
                             {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
-                            <Button class="cyan btn modal-trigger" href="#modal1">Edit</button>
+                            <Button class="waves-effect waves-light cyan btn modal-trigger" href="#modal1">Edit <i class="fa-solid fa-pen-to-square"></i></button>
                             <!-- Modal Trigger for edit -->
-                            <Button class="red btn modal-trigger" href="#modal2">Delete</button>
+                            <Button class="waves-effect waves-light red btn modal-trigger" href="#modal2">Delete <i class="fa-solid fa-trash"></i></button>
                             {% endif %}
                             <!-- Modal Trigger -->
-                            <Button class="waves-effect waves-light blue btn modal-trigger" href="#modal3" hidden>Write a Review</button>                              
+                            <Button class="waves-effect waves-light blue btn modal-trigger" href="#modal3" hidden>Write a Review <i class="fa-solid fa-pen"></i></button>                              
                         </div>
                     </div>
                     {% endif %}
@@ -133,8 +133,8 @@
                     <p>{{review.review_review}}</p>
                     {% if session.user|lower == review.created_by|lower or session.user == "admin" %}
                     <div class="row center-align">
-                        <Button class="cyan btn modal-trigger" href="#modal4">Edit</button>
-                        <button class="red btn modal-trigger" href="#modal5">Delete</a>
+                        <Button class="waves-effect waves-light btn cyan modal-trigger" href="#modal4">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="waves-effect waves-light btn red modal-trigger" href="#modal5">Delete <i class="fa-solid fa-trash"></i></a>
                     </div>
                     {% endif %}
                 </ul>

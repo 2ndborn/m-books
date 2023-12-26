@@ -14,15 +14,14 @@
     <title>M-Books</title>
 </head>
 <body>
-<div id="hero-image">
 
     <header>
 
         <nav class="nav-extended black nav-style">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_titles') }}" class="brand-logo nav-font">M-Books</a>
+                <a href="{{ url_for('get_titles') }}" class="brand-logo nav-font text-shadow">M-Books</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down nav-font">
+                <ul class="right hide-on-med-and-down nav-font text-shadow">
                     <li><a href="{{ url_for('get_titles') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
@@ -38,7 +37,7 @@
         
         <!--Mobile Side Navigation-->
         <ul class="sidenav" id="mobile-demo">
-            <h4 class="center-align">M-Books</h4>
+            <h4 class="center-align text-shadow">M-Books</h4>
             <li><a href="{{ url_for('get_titles') }}">Home</a></li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
@@ -58,7 +57,7 @@
             {% if messages %}
                 {% for message in messages %}
                 <div class="row flashes">
-                    <h4 class="center-align">{{ message }}</h4>
+                    <h4 class="center-align cyan lighten-5 text-shadow">{{ message }}</h4>
                 </div>
                 {% endfor %}
             {% endif %}
@@ -77,6 +76,6 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}
-</div>
+
 </body>
 </html>
