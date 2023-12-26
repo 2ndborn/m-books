@@ -38,15 +38,15 @@ M.Books is a web application designed that enables its users to search for Japan
 ## Features
 
 -	**Page Consistency**
-  -	Each page has the “M.Books” header in the top left corner of the page. Clicking on the text transfers the user to the top of the home page.
-  -	Tablet and Mobile users will view the header “M.Books” in the top left corner of the page. Clicking on the text will refresh the home page.
+-	Each page has the “M.Books” header in the top left corner of the page. Clicking on the text transfers the user to the top of the home page.
+-	Tablet and Mobile users will view the header “M.Books” in the top left corner of the page. Clicking on the text will refresh the home page.
 -	**The Navigation Bar**
-  -	Desktop - Positioned on the right side
-  -	Tablet and Mobile - A burger menu with side navigation.
-  -	Navigation Bar (Un-Registeted Users)
-    - Each page will have navbar with a Home, Sign-In, Register and Search bar.
-    - Navigation Bar (Registered/Admin Users)
-    - Each page will have a Home, Sign Out, Add-Title, Contact Us.
+-	Desktop - Positioned on the right side
+-	Tablet and Mobile - A burger menu with side navigation.
+-	Navigation Bar (Un-Registeted Users)
+- Each page will have navbar with a Home, Sign-In, Register and Search bar.
+- Navigation Bar (Registered/Admin Users)
+- Each page will have a Home, Sign Out, Add-Title, Contact Us.
 - **Background-Image**
   - Each page will have the same opaque background image.
 - **Home Page**
@@ -113,7 +113,8 @@ M.Books is a web application designed that enables its users to search for Japan
 - [Heroku](https://id.heroku.com/login) to deploy the application.
 - [W3C](https://validator.w3.org/) to validate the HTML and CSS code
 - [jslint](https://www.jslint.com/) to validate JavaScript to validate the JavaScript code.
-- [w3schools](https://www.w3schools.com/jsreF/prop_text_disabled.asp)
+- [extendsclass](https://extendsclass.com/python-tester.html) to validate python code.
+- [w3schools](https://www.w3schools.com/css/css_text_shadow.asp)
 - [MDN web docs](https://developer.mozilla.org/en-US/)
 - [Balsamiq](https://balsamiq.com/) for creating the wireframe
 - [Font Awesome](https://fontawesome.com/v4/) for the icons
@@ -126,6 +127,11 @@ M.Books is a web application designed that enables its users to search for Japan
 ## Testing
 
 ### Code Validation
+
+-	![HTML](readme.files/html.validator.png)
+-	![CSS](readme.files/css.validator.png)
+-	![Python](readme.files/python.validator.png)
+-	![JavaScript](readme.files/jslint.png)
 
 ### Test Cases
 
