@@ -138,7 +138,7 @@ I rewatched the course content “Bind the data to the Edit_task form” and wit
 ![Issue](static/readme.files/bug_1.3.png)
 ![app.py file](static/readme.files/bug_1.4.png)
 ![Fix](static/readme.files/bug_1.5.png)
--
+-	**Getting related reviews to show up on the Summary Page:** I wanted reviews to show up on the summary page only if they related to the book title. At first on clicking a title, all of the reviews from the reviews dictionary were being pulled, which is the opposite of what I wanted. I watched a video on YouTube <https://youtu.be/rtYoUDEz4wo?si=yXGBtvS9Ege95-tN> that helped me understand I could make the title ObjectId part of the review data. Then I could use the ObjectId as a parameter to call all the reviews related to a specific book title. Initially, my @app.route(“/summary”) was set up to find ObjectId(titles_id), however, the  @app.route(“/add_review”) review variable was adding “title_id”: title_id. When the summary function was being called the entry couldn’t be found because it didn’t exist, therefore nothing happened. I put my frustrations to one side and focused on other parts of the application. I came back a looked at the code and saw where the error was. I changed the title_id in the review variable in the @app.route(“/summary”) function to add “title_id”: ObjectId(title_id). This immediately solved the problem.
 
 ### Browser Testing
 
