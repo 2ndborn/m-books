@@ -7,22 +7,22 @@
         </div>
     </div>
 
-    <h3 class="center-align cyan-text text-accent-1">Summary</h3>
+    <h1 class="center-align grey-text text-darken-3 text-shadow"><strong>Summary</strong></h1>
 
     <div class="row container">
         <div class="col s12 container" method="POST" action="{{ url_for('summary', titles_id=titles._id) }}">
-            <div class="col s12 col m10 offset-m1 card-panel">
+            <div class="col s12 col m10 offset-m1 card-panel box-shadow">
                 {% for title in titles %}
-                    <img class="materialboxed" height="auto" width="100%"                    
+                    <img class="materialboxed title-image" height="auto" width="100%"                    
                         src="{{title.title_image}}">            
                     <ul class="col s12 collection with-header">
                         <li class="collection-header">
-                            <h4 class="cyan-text text-darken-4"><strong>{{title.title_name}}</strong></h4>
+                            <h4 class="grey-text text-darken-3"><strong>{{title.title_name}}</strong></h4>
                         </li>
-                        <li class="collection-item cyan-text text-darken-4"><strong>Year Release: </strong>{{title.title_year}}</li>
-                        <li class="collection-item cyan-text text-darken-4"><strong>Status: </strong>{{title.title_status}}</li>
-                        <li class="collection-item cyan-text text-darken-4"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
-                        <li class="collection-item cyan-text text-darken-4"><strong>Storyline: </strong>{{title.title_story}}</li>
+                        <li class="collection-item grey-text text-darken-3"><strong>Year Release: </strong>{{title.title_year}}</li>
+                        <li class="collection-item grey-text text-darken-3"><strong>Status: </strong>{{title.title_status}}</li>
+                        <li class="collection-item grey-text text-darken-3"><strong>Mangaka: </strong>{{title.title_mangaka}}</li>
+                        <li class="collection-item grey-text text-darken-3"><strong>Storyline: </strong>{{title.title_story}}</li>
                     </ul>
                     {% if session.user or session.user|lower == "admin" %}
                     <div class="row">
@@ -31,10 +31,10 @@
                             {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
                             <Button class="cyan btn modal-trigger" href="#modal1">Edit</button>
                             <!-- Modal Trigger for edit -->
-                            <Button class="pink accent-2 btn modal-trigger" href="#modal2">Delete</button>
+                            <Button class="red btn modal-trigger" href="#modal2">Delete</button>
                             {% endif %}
                             <!-- Modal Trigger -->
-                            <Button class="waves-effect waves-light btn modal-trigger" href="#modal3" hidden>Write a Review</button>                              
+                            <Button class="waves-effect waves-light blue btn modal-trigger" href="#modal3" hidden>Write a Review</button>                              
                         </div>
                     </div>
                     {% endif %}
@@ -110,7 +110,7 @@
                 
                 <div class="row">
                     <div class="col s12 center-align">
-                        <a href="{{ url_for('get_titles') }}" class="btn-large pink accent-2 text-shadow modal-close">
+                        <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
                             No
                         </a>
                         <a href="{{ url_for('delete_title', title_id=title._id) }}" class="btn-large cyan btn">
@@ -122,19 +122,19 @@
         {% endfor %}
     </div>
 
-    <h4 class="center-align cyan-text text-accent-1">Reviews</h4>
+    <h2 class="center-align grey-text text-darken-3 text-shadow"><strong>Reviews</strong></h2>
 
     <div class="row container">
         <div class="col s12 container">
             {% for review in reviews %}
-            <div class="col s12 col m10 offset-m1 card-panel" method="POST" action="{{ url_for('summary', titles_id=titles._id)}}">
-                <ul class="col s12 collection with-header cyan-text text-darken-4">                 
+            <div class="col s12 col m10 offset-m1 card-panel box-shadow" method="POST" action="{{ url_for('summary', titles_id=titles._id)}}">
+                <ul class="col s12 collection with-header grey-text text-darken-3">                 
                     <h6><strong>{{review.review_name}}</strong></h6>
                     <p>{{review.review_review}}</p>
                     {% if session.user|lower == review.created_by|lower or session.user == "admin" %}
                     <div class="row center-align">
                         <Button class="cyan btn modal-trigger" href="#modal4">Edit</button>
-                        <button class="pink accent-2 btn modal-trigger" href="#modal5">Delete</a>
+                        <button class="red btn modal-trigger" href="#modal5">Delete</a>
                     </div>
                     {% endif %}
                 </ul>
@@ -218,7 +218,7 @@
     
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="{{ url_for('get_titles') }}" class="btn-large pink accent-2 text-shadow modal-close">
+                    <a href="{{ url_for('get_titles') }}" class="btn-large red text-shadow modal-close">
                         No
                     </a>
                     <a href="{{ url_for('delete_review', review_id=review._id) }}"

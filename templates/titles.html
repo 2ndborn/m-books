@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Manga List</h3>
+    <h1 class="center-align text-shadow"><strong>Manga List</strong></h1>
 
     <div class="row">
-        <form action="{{ url_for('search') }}" method="POST" class="col s10 col xl8 offset-s1 offset-xl2 card-panel">
+        <form action="{{ url_for('search') }}" method="POST" class="col s10 col xl8 offset-s1 offset-xl2 card-panel box-shadow">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12">
                     <i class="fas fa-search prefix cyan-text"></i>
@@ -12,7 +12,7 @@
                     <label for="query" Search Task></label>
                 </div>
                 <div class="col s12 m4 search-btn">
-                    <a href="{{ url_for('get_titles') }}" class="pink accent-2 btn">Reset</a>
+                    <a href="{{ url_for('get_titles') }}" class="red btn">Reset</a>
                     <button type="submit" class="cyan btn">
                         Search
                     </button>
@@ -22,7 +22,7 @@
             <!--mobile search/reset buttons-->
             <div class="row center-align mob-search-btn">
                 <div class="col s12 mob-btn">
-                     <a href="{{ url_for('get_titles') }}" class="pink accent-2 btn">Reset</a>
+                     <a href="{{ url_for('get_titles') }}" class="red btn">Reset</a>
                     <button type="submit" class="cyan btn">
                         Search
                     </button>
@@ -33,10 +33,10 @@
     
     {% if titles|length > 0 %}
     <div class="row">
-        <div class="col s10 col xl8 offset-s1 offset-xl2 card-panel blue-grey lighten-4">
+        <div class="col s10 col xl8 offset-s1 offset-xl2 card-panel blue-grey lighten-4 box-shadow">
             <div class="col s12 collection">
                 {% for title in titles %}
-                    <a href="{{ url_for('summary', titles_id=title._id) }}" class="collection-item cyan-text text-darken-4">{{title.title_name}}</a>                    
+                    <a href="{{ url_for('summary', titles_id=title._id) }}" class="collection-item">{{title.title_name}}</a>                    
                 {% endfor %}
             </div>
         </div>

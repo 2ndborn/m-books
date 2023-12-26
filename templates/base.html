@@ -20,17 +20,17 @@
 
         <nav class="nav-extended black nav-style">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_titles') }}" class="brand-logo nav-font pink-text text-accent-2">M-Books</a>
+                <a href="{{ url_for('get_titles') }}" class="brand-logo nav-font">M-Books</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down nav-font">
-                    <li><a href="{{ url_for('get_titles') }}" class="pink-text text-accent-2">Home</a></li>
+                    <li><a href="{{ url_for('get_titles') }}">Home</a></li>
                     {% if session.user %}
-                        <li><a href="{{ url_for('profile', username=session['user']) }}" class="pink-text text-accent-2">Profile</a></li>
-                        <li><a href="{{ url_for('add_title') }}" class="pink-text text-accent-2">Add Title</a></li>
-                        <li><a href="{{ url_for('signout') }}" class="pink-text text-accent-2">Sign Out</a></li>
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                        <li><a href="{{ url_for('add_title') }}">Add Title</a></li>
+                        <li><a href="{{ url_for('signout') }}">Sign Out</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('signin') }}" class="pink-text text-accent-2">Sign In</a></li>
-                        <li><a href="{{ url_for('register') }}" class="pink-text text-accent-2">Register</a></li>
+                        <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+                        <li><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
             </div>

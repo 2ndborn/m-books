@@ -27,6 +27,20 @@ body {
     margin-top: 10px;
 }
 
+.box-shadow {
+    box-shadow: 5px 5px 15px 1px;
+}
+
+/******************************Summary Page***********************************/
+
+.text-shadow {
+    text-shadow: 2px 1px 2px ghostwhite;
+}
+
+.title-image {
+    padding-top: 10px;
+}
+
 /******************************Media Queries**********************************/
 
 @media (max-width: 820px) {
