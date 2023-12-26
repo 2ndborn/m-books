@@ -6,4 +6,10 @@ $(document).ready(function () {
     });
     $('.modal').modal();
     $('select').formSelect();
+    $('.datepicker').datepicker();
+    $('#title_year').on('input', function () {
+        if ($(this).val().length > 4) {
+            $(this).val($(this).val().slice(0, 4));
+        }
+    });
 });
