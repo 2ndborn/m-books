@@ -159,6 +159,12 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 
 ### Browser Testing
 
+- ![Chrome](readme.files/chrome.test.png)
+- ![Edge](readme.files/edge.test.png)
+- ![Firefox](readme.files/firefox.test.png)
+- ![Opera](readme.files/opera.test.png)
+
+
 ## Deployment
 
 ### Codeanywhere
