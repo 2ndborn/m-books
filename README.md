@@ -132,6 +132,12 @@ M.Books is a web application designed that enables its users to search for Japan
 -	![CSS](readme.files/css.validator.png)
 -	![Python](readme.files/python.validator.png)
 -	![JavaScript](readme.files/jslint.png)
+-	![Lighhouse get_title](readme.files/lh.get_title.png)
+-	![Lighhouse sign_in](readme.files/lh.sign_in.png)
+-	![Lighhouse register](readme.files/lh.register.png)
+-	![Lighhouse profile](readme.files/lh.profile.png)
+-	![Lighhouse add_title](readme.files/lh.add_title.png)
+-	![Lighhouse summary](readme.files/lh.summary.png)
 
 ### Test Cases
 
