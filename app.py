@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_titles")
 def get_titles():
-    titles = list(mongo.db.titles.find().sort("category_name", 1))
+    titles = list(mongo.db.titles.find().sort("title_name", 1))
     return render_template("titles.html", titles=titles)
 
 
@@ -174,7 +174,6 @@ def add_review(title_id):
             return redirect(url_for("get_titles", title_id=title_id))
         else:
             review = {
-                "review_title": request.form.get("review_title"),
                 "review_name": request.form.get("review_name"),
                 "review_review": request.form.get("review_review"),
                 "created_by": session["user"],

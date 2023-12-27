@@ -36,7 +36,7 @@
         <div class="col s10 col xl8 offset-s1 offset-xl2 card-panel box-shadow">
             <div class="col s12 collection">
                 {% for title in titles %}
-                    <a href="{{ url_for('summary', titles_id=title._id) }}" class="collection-item grey-text text-darken-3">{{title.title_name}}</a>                    
+                    <a href="{{ url_for('summary', titles_id=title._id) }}" class="collection-item cyan-text text-darken-3">{{title.title_name}}</a>                    
                 {% endfor %}
             </div>
         </div>
