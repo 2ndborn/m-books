@@ -212,7 +212,7 @@
     <div id="modal5" class="modal">
         {% for review in reviews %}
         <div class="modal-content">
-            {% if session.user == reviews.created_by or session.user == "admin" %}
+            {% if session.user|lower == review.created_by|lower or session.user == "admin" %}
             <div class="row">
                 <div class="col s12">
                     <h4 class="center-align">Are You Sure?</h4>

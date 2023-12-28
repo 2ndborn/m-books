@@ -120,16 +120,12 @@ def review_id(review_id):
 @app.route("/add_title", methods=["GET", "POST"])
 def add_title():
     if request.method == "POST":
-        # check if title already exists in db
-        existing_title = mongo.db.titles.find_one(
-            {"title_name": request.form.get("title_name").lower()})
-
-        if existing_title:
+        title_name = request.form.get("title_name")
+        if mongo.db.titles.find_one({"title_name": title_name}):
             flash("Title already exists")
-            return redirect(url_for("add_title"))
         else:
             title = {
-                "title_name": request.form.get("title_name"),
+                "title_name": title_name,
                 "title_year": request.form.get("title_year"),
                 "title_status": request.form.get("title_status"),
                 "title_mangaka": request.form.get("title_mangaka"),
