@@ -128,16 +128,16 @@ M.Books is a web application designed that enables its users to search for Japan
 
 ### Code Validation
 
--	![HTML](readme.files/html.validator.png)
--	![CSS](readme.files/css.validator.png)
--	![Python](readme.files/python.validator.png)
--	![JavaScript](readme.files/jslint.png)
--	![Lighhouse get_title](readme.files/lh.get_title.png)
--	![Lighhouse sign_in](readme.files/lh.sign_in.png)
--	![Lighhouse register](readme.files/lh.register.png)
--	![Lighhouse profile](readme.files/lh.profile.png)
--	![Lighhouse add_title](readme.files/lh.add_title.png)
--	![Lighhouse summary](readme.files/lh.summary.png)
+-	**HTML** ![HTML](readme.files/html.validator.png)
+-	**CSS** ![CSS](readme.files/css.validator.png)
+-	**Python** ![Python](readme.files/python.validator.png)
+-	**JavaScript** ![JavaScript](readme.files/jslint.png)
+-	**Home Page** ![Lighhouse get_title](readme.files/lh.get_title.png)
+-	**Sign-In Page** ![Lighhouse sign_in](readme.files/lh.sign_in.png)
+-	**Registration Page** ![Lighhouse register](readme.files/lh.register.png)
+-	**Profile** ![Lighhouse profile](readme.files/lh.profile.png)
+-	**Add-Title Page** ![Lighhouse add_title](readme.files/lh.add_title.png)
+-	**Summary Page** ![Lighhouse summary](readme.files/lh.summary.png)
 
 ### Test Cases
 
@@ -159,18 +159,10 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 
 ### Browser Testing
 
-<<<<<<< HEAD
-- ![Chrome](readme.files/chrome.test.png)
-- ![Edge](readme.files/edge.test.png)
-- ![Firefox](readme.files/firefox.test.png)
-- ![Opera](readme.files/opera.test.png)
-
-=======
-- Chrome
-- Edge
-- Firefox
-- Opera
->>>>>>> 8a6a373 (Added minlength and maxlength to write a review modal)
+- **Chrome** ![Chrome](readme.files/chrome.test.png)
+- **Edge** ![Edge](readme.files/edge.test.png)
+- **Firefox** ![Firefox](readme.files/firefox.test.png)
+- **Opera** ![Opera](readme.files/opera.test.png)
 
 ## Deployment
 

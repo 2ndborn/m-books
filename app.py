@@ -120,20 +120,28 @@ def review_id(review_id):
 @app.route("/add_title", methods=["GET", "POST"])
 def add_title():
     if request.method == "POST":
-        title = {
-            "title_name": request.form.get("title_name"),
-            "title_year": request.form.get("title_year"),
-            "title_status": request.form.get("title_status"),
-            "title_mangaka": request.form.get("title_mangaka"),
-            "title_story": request.form.get("title_story"),
-            "title_image": request.form.get("title_image"),
-            "title_rname": request.form.get("title_rname"),
-            "title_review": request.form.get("title_review"),
-            "created_by": session["user"]
-        }
-        mongo.db.titles.insert_one(title)
-        flash("Title Successfully Added")
-        return redirect(url_for("get_titles"))
+        # check if title already exists in db
+        existing_title = mongo.db.titles.find_one(
+            {"title_name": request.form.get("title_name").lower()})
+
+        if existing_title:
+            flash("Title already exists")
+            return redirect(url_for("add_title"))
+        else:
+            title = {
+                "title_name": request.form.get("title_name"),
+                "title_year": request.form.get("title_year"),
+                "title_status": request.form.get("title_status"),
+                "title_mangaka": request.form.get("title_mangaka"),
+                "title_story": request.form.get("title_story"),
+                "title_image": request.form.get("title_image"),
+                "title_rname": request.form.get("title_rname"),
+                "title_review": request.form.get("title_review"),
+                "created_by": session["user"]
+            }
+            mongo.db.titles.insert_one(title)
+            flash("Title Successfully Added")
+            return redirect(url_for("get_titles"))
 
     return render_template("add_title.html")
 
