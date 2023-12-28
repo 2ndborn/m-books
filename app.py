@@ -180,7 +180,7 @@ def add_review(title_id):
                 "title_id": ObjectId(title_id)
             }
             mongo.db.reviews.insert_one(review)
-            flash("Review Added")
+            flash("Review Successfully Added")
         return redirect(url_for("get_titles", title_id=title_id))
 
 

@@ -66,12 +66,13 @@
                                             <option value="Ongoing">Ongoing</option>
                                             <option value="Completed">Completed</option>
                                         </select>
+                                        <label for="title_status">Status</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="title_mangaka" name="title_mangaka" type="text" value="{{title.title_mangaka}}" minlength="5" maxlength="25" class="validate" required>
-                                        <label for="title_mangaka">Name of Mangaka</label>
+                                        <label for="title_mangaka">Name of Mangaka (Author)</label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -97,7 +98,7 @@
         </div>
     </div>
 
-    <!-- Modal Structure delete -->
+    <!-- Modal delete title-->
     <div id="modal2" class="modal">
         {% for title in titles %}
             <div class="modal-content">
@@ -157,12 +158,15 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="review_review" name="review_review" class="materialize-textarea" required></textarea>
+                        <textarea id="review_review" name="review_review" minlength="5" maxlength="200" class="materialize-textarea" required></textarea>
                         <label for="review_review">Write a Review</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12 center-align">
+                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
+                            Cancel
+                        </a>
                         <button type="submit" class="btn-large modal-close">Add Review</button>
                     </div>
                 </div>
@@ -176,7 +180,7 @@
         {% for review in reviews %}
         <form method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
             <div class="modal-content">
-                {% if session.user == review.created_by %}
+                {% if session.user == review.created_by or session.user == "admin" %}
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="review_name" name="review_name" type="text" value="{{review.review_name}}" minlength="5"
@@ -208,7 +212,7 @@
     <div id="modal5" class="modal">
         {% for review in reviews %}
         <div class="modal-content">
-            {% if session.user == review.created_by %}
+            {% if session.user == reviews.created_by or session.user == "admin" %}
             <div class="row">
                 <div class="col s12">
                     <h4 class="center-align">Are You Sure?</h4>

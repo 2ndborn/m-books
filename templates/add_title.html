@@ -29,12 +29,13 @@
                             <option value="Ongoing">Ongoing</option>
                             <option value="Completed">Completed</option>
                         </select>
+                        <label for="title_status">Status</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="title_mangaka" name="title_mangaka" type="text" minlength="5" maxlength="25" class="validate" required>
-                        <label for="title_mangaka">Name of Mangaka</label>
+                        <label for="title_mangaka">Name of Mangaka (Author)</label>
                     </div>
                 </div>
                 <div class="row">
@@ -45,6 +46,9 @@
                 </div>
                 <div class="row">
                     <div class="col s12 center-align">
+                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
+                            Cancel
+                        </a>
                         <button type="submit" class="btn-large">Add Title</button>
                     </div>
                 </div>
