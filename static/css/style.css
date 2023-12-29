@@ -70,6 +70,14 @@ body {
         padding-left: 10px;
         padding-right: 10px;
     }
+
+    .sidenav {
+        width: 200px;
+    }
+
+    .title-btn button {
+        margin: 2px 0;
+    }
 }
 
 @media (max-width: 360px) {
