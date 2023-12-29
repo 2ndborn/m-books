@@ -144,16 +144,10 @@ M.Books is a web application designed that enables its users to search for Japan
 - The users journey begins at the Home page. The navbar is at the top of the page with the logo on the left and the Home, Sign-In and Register options on the right. There is a blured image of a bedroom in the background. The "Manga List" header is just below the navbar and underneath is Search bar and a list of manga titles. ![Home page](readme.files/homepage.png)
 - The search bar has an text input box  with a red "Reset" and blue "Search" button on the right.
 - Entering a title into the search bar will render the list down and show the  related title. Pressing the reset button will refresh the page. ![Search](readme.files/search.png)
-- Unrelated words or titles will return a message "No Results Found".
+- Unrelated words or titles will return a message "No Results Found". ![no results](readme.files/noresult.png)
 - Pressing on the Home button directs users to the Home page.
 - If the user clicks on the logo the Home page is refreshed. This is the same on every page.
-- The user is directed to the Summary page when a title from the list is clicked. ![Press title](readme.files)
-- The Summary page has a "Summary" header and below is a card that shows an image of the related title, Name of title, Year of Release, Status, Mangaka (author) and the Storyline. The image will be enlarged if the user clicks on the image. Users can get back to the home page if they press the back button located at the top left-hand side of the page. When the user scrolls further down the page they can see reviews left by registered users. ![Summary page](readme.files)
-- ![Enlarged image](readme.files)
-- Unrelated words or titles will return a message "No Results Found".
-- Pressing on the Home button directs users to the Home page.
-- If the user clicks on the logo the Home page is refreshed. This is the same on every page.
-- The user is directed to the Summary page when a title from the list is clicked. ![Press title](readme.files)
+- The user is directed to the Summary page when a title from the list is clicked. ![Press title](readme.files/demon_title.png)
 - The Summary page has a "Summary" header and below is a card that shows an image of the related title, Name of title, Year of Release, Status, Mangaka (author) and the Storyline. The image will be enlarged if the user clicks on the image. Users can get back to the home page if they press the back button located at the top left-hand side of the page. When the user scrolls further down the page they can see reviews left by registered users. ![Summary page](readme.files/demon_title.png)
 - ![Enlarged image](readme.files)
 - To register for an account users can press "Register" located on the navbar to be directed to the registration page. There are 2 input boxes for users to choose a username and a password of at least 5 characters. Below the input boxes is a green "Register" button. In the event the user wanted the Sign page, there is a prompt below the "Register" button that says "Already register Sign In" Pressing Sign In will redirect the user to the Sign In page. ![Registration page](readme.files/register_page.png)
