@@ -89,9 +89,13 @@ M.Books is a web application designed that enables its users to search for Japan
   - Orbitron is used for the Logo and Navigation options.
   - Ubuntu is used for everything else.
 
--	**Colour**
-  -	Black
-
+-	**Colour*
+- Black for the Navigation bar.
+-	White for the Logo and Navigation bar text.
+-	Cyan for the Text Shadow, Manga List items and Edit Buttons.
+-	Red for the Delete Button.
+-	Blue for the Write a Review Button.
+  
 ## Wireframes
 
 ![Home Page](readme.files/Home%20Page.png)
@@ -235,5 +239,15 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 ## Deployment
 
 ### Codeanywhere
+
+ 1. Go to [https://app.codeanywhere.com/](https://app.codeanywhere.com/)
+ 2. In the Workspaces section click on “2ndborn-m-books-7m988zenj5”.
+![codeanywhere workspace](readme.files/codeany_workspace.png)
+ 3. Once the page is loaded open a new terminal and type “python3 app.py”. Then press Enter.
+![terminal](readme.files/terminal.png)
+ 4. Options to open the preview page or the browser will be shown. Click on the browser.
+![port options](readme.files/port.png)
+ 5. The browser will open.
+![webpage](readme.files/main_webpage.png)
 
 ### Heroku
