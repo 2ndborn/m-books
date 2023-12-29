@@ -186,6 +186,29 @@ M.Books is a web application designed that enables its users to search for Japan
 - If a user submits a title that already existing the add title page will refresh with a message "Title alreday exists" ![exist_title_mess](readme.files/exist_title_mess.png)
 - If the user presses Sign Out on the navbar they are directed to the Sign In page with the message "You have signed out" ![signout_mess](readme.files/signout_mess.png)
 
+### Device Testing
+
+- 1024px
+![1024](readme.files/1024.png)
+- 912px
+![912](readme.files/912.png)
+- 820px
+![820](readme.files/820.png)
+- 768px
+![768](readme.files/768.png)
+- 540px
+![540](readme.files/540.png)
+- 430px
+![430](readme.files/430.png)
+- 412px
+![412](readme.files/412.png)
+- 390px
+![390](readme.files/390.png)
+- 360px
+![360](readme.files/360.png)
+- 280px
+![280](readme.files/280.png)
+
 ### Fixed Bugs
 
 -	**Accessing individual Titles on the Summary page**: I  wanted  to  make  it  so when the user clicks a title, they would be transported to the summary screen with further deals of that title.
