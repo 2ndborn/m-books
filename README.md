@@ -89,12 +89,12 @@ M.Books is a web application designed that enables its users to search for Japan
   - Orbitron is used for the Logo and Navigation options.
   - Ubuntu is used for everything else.
 
--	**Colour*
-- Black for the Navigation bar.
--	White for the Logo and Navigation bar text.
--	Cyan for the Text Shadow, Manga List items and Edit Buttons.
--	Red for the Delete Button.
--	Blue for the Write a Review Button.
+-	**Colour**
+  - Black for the Navigation bar.
+  -	White for the Logo and Navigation bar text.
+  -	Cyan for the Text Shadow, Manga List items and Edit Buttons.
+  -	Red for the Delete Button.
+  -	Blue for the Write a Review Button.
   
 ## Wireframes
 
@@ -132,7 +132,14 @@ M.Books is a web application designed that enables its users to search for Japan
 
 ### Code Validation
 
--	**HTML** ![HTML](readme.files/html.validator.png)
+-	**HTML**
+  -	title.html ![Home](readme.files/html_get-title.png)
+  -	signin.html ![Signin](readme.files/html_signin.png)
+  -	register.html ![Register](readme.files/html_register.png)
+  -	profile.html ![Profile](readme.files/html_profile.png)
+  -	add-title.html ![add-title](readme.files/html_add-title.png)
+  -	summary.html ![Summary](readme.files/html_summary.png)
+  
 -	**CSS** ![CSS](readme.files/css.validator.png)
 -	**Python** ![Python](readme.files/python.validator.png)
 -	**JavaScript** ![JavaScript](readme.files/jslint.png)
