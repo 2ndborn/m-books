@@ -98,7 +98,7 @@ M.Books is a web application designed that enables its users to search for Japan
   
 ## Wireframes
 
-![Home Page](readme.files/Home%20Page.png)
+![Home Page](readme.files/homepage.png)
 ![Register](readme.files/register.png)
 ![Sign In](readme.files/sign-in.png)
 ![Sign Out](readme.files/sign-out.png)
@@ -127,7 +127,6 @@ M.Books is a web application designed that enables its users to search for Japan
 - [MongoDB](https://mongodb.com) for the database.
 - Chrome Developer Tools for device testing.
 - Google Lighthouse to text site performance.
-- [wall.alphacoders.com](https://wall.alphacoders.com/big.php?i=1342052) for the background image.
 
 ## Testing
 
@@ -151,7 +150,6 @@ M.Books is a web application designed that enables its users to search for Japan
 -	**Profile** ![Lighhouse profile](readme.files/lh.profile.png)
 -	**Add-Title Page** ![Lighhouse add_title](readme.files/lh.add_title.png)
 -	**Summary Page** ![Lighhouse summary](readme.files/lh.summary.png)
-- [Background Bedroom Image](https://wall.alphacoders.com/big.php?i=1342052) <https://wall.alphacoders.com/big.php?i=1342052>
 
 ### Test Cases
 
@@ -381,7 +379,7 @@ Home Page*
 However,  what  displayed  was a 404 message.
 ![404 Message](readme.files/bug_1.2.png)
 I rewatched the course content “Bind the data to the Edit_task form” and with some trial & error and the help of Jinja I was able to deduce that because href in titles.html was wrapped in a for loop I needed to change titles.id to title.id. This solved the problem.
-![Issue](static/readme.files/bug_1.3.png)
+![Issue](readme.files/bug_1.3.png)
 ![app.py file](readme.files/bug_1.4.png)
 ![Fix](readme.files/bug_1.5.png)
 -	**Getting related reviews to show up on the Summary Page:** I wanted reviews to show up on the summary page only if they related to the book title. At first on clicking a title, all of the reviews from the reviews dictionary were being pulled, which is the opposite of what I wanted. I watched a video on [YouTube](https://youtu.be/rtYoUDEz4wo?si=yXGBtvS9Ege95-tN) that helped me understand I could make the title ObjectId part of the review data. Then I could use the ObjectId as a parameter to call all the reviews related to a specific book title.
@@ -428,3 +426,7 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 ![heroku_press_deloy](readme.files/heroku_press_deloy.png)
 8. Finally, click on the Open App button at the top of the page.
 ![heroku_open_app](readme.files/heroku_open_app.png)
+
+## Credits
+
+- [wall.alphacoders.com](https://wall.alphacoders.com/big.php?i=1342052) for the background image.
