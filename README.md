@@ -149,6 +149,7 @@ M.Books is a web application designed that enables its users to search for Japan
 -	**Profile** ![Lighhouse profile](readme.files/lh.profile.png)
 -	**Add-Title Page** ![Lighhouse add_title](readme.files/lh.add_title.png)
 -	**Summary Page** ![Lighhouse summary](readme.files/lh.summary.png)
+- [Background Bedroom Image](https://wall.alphacoders.com/big.php?i=1342052) <https://wall.alphacoders.com/big.php?i=1342052>
 
 ### Test Cases
 
@@ -196,6 +197,157 @@ M.Books is a web application designed that enables its users to search for Japan
 - If the user pressed the cancel button they are redirected to the Home page. If they press the Add Title button they are redirected to the Home page with the message "Title Successfully Added". ![add_title_mes](readme.files/add_title_mess.png)
 - If a user submits a title that already existing the add title page will refresh with a message "Title alreday exists" ![exist_title_mess](readme.files/exist_title_mess.png)
 - If the user presses Sign Out on the navbar they are directed to the Sign In page with the message "You have signed out" ![signout_mess](readme.files/signout_mess.png)
+
+### Test Procedure
+
+- Does the “M-Book” Logo refresh/direct the user back the home page?
+  -	*I pressed the “M-Book” Logo and it refreshed the page. The Home page is refreshed when the “M-Book” Logo is pressed.*
+  - *The user is directed to the Home page when the " M-Book" Logo” is pressed on the Home, Sign-In, Register, Profile, Summary and Add-Title pages.*
+- Does the “Home” link on the navigation bar refresh/direct the user to
+   the Home page?
+
+  - *The Home page is refreshed when the “Home” link is pressed.*
+  - *The user is directed to the Home page when the "Home” link is pressed on the Sign-In, Register, Profile, Summary and Add-Title pages.*
+
+- Does the “Sign-In” link on the navigation bar refresh/direct the user to the Sign-In page?
+	 - *The Sign-In page is refreshed when the “Sign-In” link is pressed.*
+	 - *The user is directed to the Sign-In page when the "Sign-In” link is pressed on the Home and Register pages.*
+
+- Does the “Register” link on the navigation bar refresh/direct the user to the Register page?
+	 - *The Register page is refreshed when the “Register” link is pressed.*
+	 - *The user is directed to the Register page when the "Register” link is pressed on the Home and Sign-In pages.*
+
+**Signed In**
+
+- Does the “Profile” link on the navigation bar refresh/direct the user to the Profile page?
+	 - *The Profile page is refreshed when the “Profile” link is pressed.*
+	 - *The user is directed to the Profile page when the "Profile” link is pressed on the Summary and Add-Title pages.*
+
+- Does the “Add-Title” link on the navigation bar refresh/direct the user to the Add-Title page?
+	 - *The Add-Title page is refreshed when the “Add-Title” link is pressed.*
+	 - *The user is directed to the Add-Title page when the "Add-Title” link is pressed on the Summary and Profile pages.
+Home Page*
+
+- When a manga title is entered into the search bar and the search button is pressed does it render the list displaying related titles?
+	 - *Demon Slayer was displayed when the word “Demon” was entered into the search bar and the search button was pressed.
+
+- Does the reset button refresh the page when pressed?
+	 - *The page is refreshed with he reset button is pressed.*
+- Is the user directed to the summary page of the same title when a manga title is pressed?
+  - *When the “Demon Slayer” is pressed, the Demon Slayer summary page is rendered.*
+
+**Sign-In Page**
+
+- When the correct username and password is entered successfully, is the profile page rendered after the Sign-In button is pressed?
+	 -	*The Profile page is rendered displaying the message “Welcome {{username}}” when the correct username and password is entered after the “Sign-In button is pressed.*
+
+- When an incorrect username and/or password is entered, is the page refreshed displaying the message “incorrect Username and/or Password entered” after the Sign-In button is pressed?
+	 - *The page is refreshed displaying the message “incorrect Username and/or Password entered” after the Sign-In button is pressed when an incorrect username and/or password is entered.*
+
+- When the requirements of the text input boxes are not met, does the line turn red displaying the message “Please match the format requested”?
+	 - *The line turns red when the requirements of the text input boxes are not met, displaying the message “Please match the format requested”.*
+
+- When the Register link at the bottom of the page is clicked, is the user directed to the Register page?
+	 - The user is directed to the Register page when the Register link at the bottom of the page is pressed.
+
+**Register Page**
+
+- When a username and password is entered successfully, is the profile page rendered after the Register button is pressed?
+	 - *The Profile page is rendered displaying the message “Registration Successful” when the correct username and password is entered after the “Register” button is pressed.*
+
+- When an existing username is entered, is the page refreshed displaying the message “Username already exists” after the Register button is pressed?
+	 - *The page is refreshed after the Register button is pressed displaying the message “Username already exists” when an existing username is entered.*
+
+- When the requirements of the text input boxes are not met, does the line turn red displaying the message “Please match the format requested”?
+	 - *The line turns red when the requirements of the text input boxes are not met, displaying the message “Please match the format requested”.*
+
+- When the Sign-In link at the bottom of the page is clicked, is the user directed to the Sign-In page?
+	 - *The user is directed to the Sign-In page when the Sign-In link at the bottom of the page is pressed.*
+
+**Add-Title Page**
+
+- When the requirements of the text input boxes are not met, does the line turn red displaying the message “Please match the format requested”?
+	 - The line turns red when the requirements of the text input boxes are not met, displaying the message “Please match the format requested”.
+
+- When user presses the cancel button are they directed to the Home page?
+	 - *The user is directed to the Home page, when the cancel button is pressed.
+
+- When all information is entered correctly and after the Add-Title button is pressed, is the user directed to the Home page displaying the message “Title Successfully Added”?
+	 - *The user is directed to the Home page displaying the message “Title Successfully Added” when all information is entered correctly, and the Add-Title button is pressed.*
+
+- When the user enters a title that already exists, after the Add-Title button is pressed, is the Add-Title page refreshed displaying the message “Title already exists”?
+	 - *The page is refreshed after pressing Add-Title button displaying the message “Title already exists”, when the user enters a title that already exists.*
+
+**Summary Page (Signed Out)**
+
+- Does the Summary page provide read only access in the form of the Title image, Name of Title, Year of Release, Status, Mangaka (Author), Storyline, Review Name and Review details.
+	 - *The Summary page provide read only access in the form of the Title image, Name of Title, Year of Release, Status, Mangaka (Author), Storyline, Review Name and Review details.*
+
+**Summary Page (Signed In)**
+
+- When the summary page is accessed, does the user have access to the Write a Review button?
+	 - *The user has access to the write review button when the summary page is accessed.*
+
+- When the Write a Review button is pressed, is the modal activated displaying a Review Name text input box, a Write a Review text input box, a red Cancel button and a green Add Review button?
+	 - *The modal is activated when the Write a Review button is pressed displaying a Review Name text input box, a Write a Review text input box a red Cancel button and a green Add Review button.*
+
+- When the Write a Review Cancel button is pressed, does it direct the user to the Home page?
+	 - *The user is directed to the Home page when the Write a Review Cancel button is pressed.*
+
+- When the user satisfies the requirements to add a review, is the user directed to the Home page displaying the message “Review Successfully Added”?
+	 - *The user is directed to the Home page displaying the message "Review Successfully Added” when the requirements to add a review have been met.*
+
+- When the requirements to add a review have not been met, does the lines turn red displaying the message “Please match the format requested”?
+	 - *The line turns red displaying the message “Please match the format requested” when the requirements to add a review have not been met.*
+- Does the Edit and Delete buttons display only if the user is the creator or an admin user?
+	 - *If the user is the creator or an admin user the Edit and Delete buttons are displayed or else they do not.*
+
+**Summary Edit Title**
+
+- When the Edit button in the title section is pressed, does the modal activate displaying prepopulated manga title data with a red “Cancel” and a green “Complete” button?
+	 - *The modal is activated when the Edit button is pressed displaying prepopulated manga title data with a red “Cancel” and a green “Complete” button.*
+
+- When the cancel button is pressed does it direct the user to the Home page?
+	 - *The user is directed to the Home page when the cancel button is pressed.*
+
+- When the Complete button is pressed does it direct the user to the Home page displaying the message “Title successfully updated”.
+	 - *The user is directed to the Home page displaying the message “Title successfully updated” when the complete button is pressed.*
+
+- Are the details of the manga title updated following the changes made when the user accesses the summary page.
+	 - *Changes were made on all sections of the summary page and these were successfully updated following the changes that were made.*
+
+**Summary Delete Title**
+
+- When the Delete button in the title section is pressed, does the modal activate displaying the message “Are you sure? {Title} will be permanently deleted with a red “No” and a green “Yes” button?
+	 - *The modal is activated when pressed, displaying the message “Are you sure? {Title} will be permanently deleted with a red “No” and a green “Yes” button.*
+
+- When the “No” button is pressed is the page refreshed?
+	 - *The page is refreshed when the no button is pressed.*
+
+- When the “Yes” button is pressed is the user directed to the Home page displaying the message “Title successfully deleted”?
+	 - *The user is directed to the Home page displaying the message "Title successfully deleted” when the “Yes” button is pressed.*
+
+- Does the title still appear within the list of manga titles on the   Home page?  
+	 - *The title is no longer available within the list of manga titles on the Home page.*
+
+**Review Section**
+
+- Does the Edit and Delete buttons display only if the user is the  creator or an admin user?
+  - The Edit and Delete buttons display only if the user is the creator or an admin user.
+
+**Edit Review**
+
+- When the Edit button is pressed, does the modal activate displaying prepopulated review data with a red “Cancel” and a green “Complete” button?
+	 - *The modal activates when the Edit button is pressed displaying prepopulated review data with a red “Cancel” and a green “Complete” button.*
+
+- When the “Cancel” button is pressed does it direct the user to the Home page?
+	 - *The user is directed to the Home page when the cancel button is pressed.*
+
+- When the Complete button is pressed does it direct the user to the Home page displaying the message “Review successfully updated”
+	 - *The user is directed to the Home page displaying the message “Review successfully updated” when the complete button is pressed.*
+
+- Have the details of the review been updated following the changes made when the user accesses the summary page?
+	 - *Changes were made on all sections of the review, and these were successfully updated following the changes that were made.*
 
 ### Device Testing
 
@@ -258,3 +410,19 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 ![webpage](readme.files/main_webpage.png)
 
 ### Heroku
+
+ 1. Go to [Heroku.com ](https://id.heroku.com/login)
+![heroku_webpage](readme.files/heroku_webpage)
+2. From the home page find the application "m-books" and click on it.
+![heroku_homepage](readme.files/heroku_con_github)
+3.	Click on the deploy tab.
+![deploy_tab](readme.files/deploy_tab)
+4. Scroll down to deployment method, click on GitHub, search for your repository profile, key in the name of the repository and then press search.
+![heroku_con_github](readme.files/heroku_con_github)
+5. Once the repository has been found click on connect. This will initially the install process.![heroku_install](readme.files/heroku_install)
+6. Once installation ahve been completed, press enable automatic deploy.
+![heroku_enable](readme.files/heroku_enable)
+7. Press deploy.
+![heroku_press_deloy](readme.files/heroku_press_deloy)
+8. Finally, click on the Open App button at the top of the page.
+![heroku_open_app](readme.files/heroku_open_app)
