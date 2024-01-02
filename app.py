@@ -167,7 +167,8 @@ def add_review(title_id):
 @app.route("/edit_title/<title_id>", methods=["GET", "POST"])
 def edit_title(title_id):
     if request.method == "POST":
-        creator = mongo.db.titles.find_one({"created_by": session["user"]})
+        creator = mongo.db.titles.find_one(
+            {"created_by": session["user"], "_id":title_id})
         # if creator submits and update
         if creator:
             submit = {
@@ -193,7 +194,8 @@ def edit_title(title_id):
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
-        creator = mongo.db.reviews.find_one({"created_by": session["user"]})
+        creator = mongo.db.reviews.find_one(
+            {"created_by": session["user"], "_id":review_id})
         # ensures only the creator can edit the review
         if creator:
             submit = {
@@ -210,7 +212,8 @@ def edit_review(review_id):
 
 @app.route("/delete_title/<title_id>")
 def delete_title(title_id):
-    creator = mongo.db.titles.find_one({"created_by": session["user"]})
+    creator = mongo.db.titles.find_one(
+        {"created_by": session["user"], "_id":title_id})
     # ensures only the creator can delete the title
     if creator:
         mongo.db.titles.delete_one({"_id": ObjectId(title_id)})
@@ -222,8 +225,9 @@ def delete_title(title_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
-    creator = mongo.db.reviews.find_one({"created_by": session["user"]})
-    #ensures only the creator can delete the review
+    creator = mongo.db.reviews.find_one(
+        {"created_by": session["user"], "_id":review_id})
+    # ensures only the creator can delete the review
     if creator:
         mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
         flash("Review Successfully Deleted")
