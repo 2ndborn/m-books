@@ -116,6 +116,9 @@ def summary(titles_id):
 
 @app.route("/add_title", methods=["GET", "POST"])
 def add_title():
+    # check if the user has logged in
+    if not ('user' in session):
+       return render_template("404.html")
     if request.method == "POST":
         # Check if the title already exists in the database
         title_name = request.form.get("title_name")
@@ -166,11 +169,15 @@ def add_review(title_id):
 
 @app.route("/edit_title/<title_id>", methods=["GET", "POST"])
 def edit_title(title_id):
+    # check if the user has logged in
+    if not ('user' in session):
+       return render_template("404.html")
     if request.method == "POST":
         creator = mongo.db.titles.find_one(
             {"created_by": session["user"], "_id":title_id})
+        admin = mongo.db.users.find_one({"username": "admin"})
         # if creator submits and update
-        if creator:
+        if creator or admin:
             submit = {
                 "title_name": request.form.get("title_name"),
                 "title_year": request.form.get("title_year"),
@@ -185,7 +192,7 @@ def edit_title(title_id):
         else:
             # don't update if not the creator
             flash("Cannot be edited")
-        return redirect(url_for("get_titles"))
+        return redirect(url_for("summary", titles_id=title_id))
 
     title = mongo.db.titles.find_one({"_id": ObjectId(title_id)})
     return render_template("summary.html", title=title)
