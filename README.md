@@ -411,7 +411,7 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 
 ### Heroku
 
- 1. Go to [Heroku.com ](https://id.heroku.com/login)
+1. Go to [Heroku.com](https://id.heroku.com/login)
 ![heroku_webpage](readme.files/heroku_webpage)
 2. From the home page find the application "m-books" and click on it.
 ![heroku_homepage](readme.files/heroku_con_github)
