@@ -414,17 +414,17 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 ### Heroku
 
 1. Go to [Heroku.com](https://id.heroku.com/login)
-![heroku_webpage](readme.files/heroku_webpage)
+![heroku_webpage](readme.files/heroku_webpage.png)
 2. From the home page find the application "m-books" and click on it.
-![heroku_homepage](readme.files/heroku_con_github)
+![heroku_homepage](readme.files/heroku_con_github.png)
 3.	Click on the deploy tab.
-![deploy_tab](readme.files/deploy_tab)
+![deploy_tab](readme.files/deploy_tab.png)
 4. Scroll down to deployment method, click on GitHub, search for your repository profile, key in the name of the repository and then press search.
-![heroku_con_github](readme.files/heroku_con_github)
-5. Once the repository has been found click on connect. This will initially the install process.![heroku_install](readme.files/heroku_install)
+![heroku_con_github](readme.files/heroku_con_github.png)
+5. Once the repository has been found click on connect. This will initially the install process.![heroku_install](readme.files/heroku_install.png)
 6. Once installation ahve been completed, press enable automatic deploy.
-![heroku_enable](readme.files/heroku_enable)
+![heroku_enable](readme.files/heroku_enable.png)
 7. Press deploy.
-![heroku_press_deloy](readme.files/heroku_press_deloy)
+![heroku_press_deloy](readme.files/heroku_press_deloy.png)
 8. Finally, click on the Open App button at the top of the page.
-![heroku_open_app](readme.files/heroku_open_app)
+![heroku_open_app](readme.files/heroku_open_app.png)
