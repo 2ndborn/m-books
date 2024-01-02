@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
     
+<!--back button-->
     <div class="row">
         <div class="col s12 back-button">
             <a href="{{ url_for('get_titles') }}" class="waves-effect waves-light btn cyan"><i class="fa-solid fa-arrow-left"></i></a>            
         </div>
     </div>
 
+    <!--summary section-->
     <h1 class="center-align grey-text text-darken-3 text-shadow"><strong>Summary</strong></h1>
 
     <div class="row container">
         <div class="col s12 container" method="POST" action="{{ url_for('summary', titles_id=titles._id) }}">
+            <!--title summary-->
             <div class="col s12 col m10 offset-m1 card-panel box-shadow">
                 {% for title in titles %}
                     <img class="materialboxed title-image" height="auto" width="100%"                    
@@ -30,7 +33,7 @@
                             <!-- Modal Trigger for edit -->
                             {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
                             <Button class="waves-effect waves-light cyan btn modal-trigger" href="#modal1">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-                            <!-- Modal Trigger for edit -->
+                            <!-- Modal Trigger for delete -->
                             <Button class="waves-effect waves-light red btn modal-trigger" href="#modal2">Delete <i class="fa-solid fa-trash"></i></button>
                             {% endif %}
                             <!-- Modal Trigger -->
@@ -92,37 +95,66 @@
                             </div>
                         </form>
                     </div>
+
+                    <!-- Modal delete title-->
+                    <div id="modal2" class="modal">
+                        <div class="modal-content">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h4 class="center-align">Are You Sure?</h4>
+                                    <h5 class="center-align">{{title.title_name}} will be permanantly deleted</h5>
+                                </div>
+                            </div>
+                    
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
+                                        No
+                                    </a>
+                                    <a href="{{ url_for('delete_title', title_id=title._id) }}" class="btn-large cyan btn">
+                                        Yes
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Structure write a review -->
+                    <div id="modal3" class="modal">
+                        <form method="POST" action="{{ url_for('add_review', title_id=title._id) }}">
+                            <div class="modal-content">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="review_name" name="review_name" type="text" minlength="5" maxlength="50" class="validate"
+                                            required>
+                                        <label for="review_name">Name Your Review</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="review_review" name="review_review" minlength="5" maxlength="200"
+                                            class="materialize-textarea" required></textarea>
+                                        <label for="review_review">Write a Review</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
+                                            Cancel
+                                        </a>
+                                        <button type="submit" class="btn-large modal-close">Add Review</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 {% endfor %}    
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal delete title-->
-    <div id="modal2" class="modal">
-        {% for title in titles %}
-            <div class="modal-content">
-                <div class="row">
-                    <div class="col s12">
-                        <h4 class="center-align">Are You Sure?</h4>
-                        <h5 class="center-align">{{title.title_name}} will be permanantly deleted</h5>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
-                            No
-                        </a>
-                        <a href="{{ url_for('delete_title', title_id=title._id) }}" class="btn-large cyan btn">
-                            Yes                            
-                        </a>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
+    <!--review section-->
     <h2 class="center-align grey-text text-darken-3 text-shadow"><strong>Reviews</strong></h2>
 
     <div class="row container">
@@ -143,37 +175,6 @@
             {% endfor %}
         </div>
     </div>             
-        
-    <!-- Modal Structure write a review -->
-    <div id="modal3" class="modal">
-        {% for title in titles %}
-        <form method="POST" action="{{ url_for('add_review', title_id=title._id) }}">
-            <div class="modal-content">            
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="review_name" name="review_name" type="text" minlength="5" maxlength="50" class="validate"
-                            required>
-                        <label for="review_name">Name Your Review</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="review_review" name="review_review" minlength="5" maxlength="200" class="materialize-textarea" required></textarea>
-                        <label for="review_review">Write a Review</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
-                            Cancel
-                        </a>
-                        <button type="submit" class="btn-large modal-close">Add Review</button>
-                    </div>
-                </div>
-            </div>                                    
-        </form>
-        {% endfor %}
-    </div>
 
     <!-- Modal Structure to edit review-->
     <div id="modal4" class="modal">
@@ -188,12 +189,13 @@
                         <label for="review_name">Name of Review</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="review_review" name="review_review" type="text" value="{{review.review_review}}" class="validate"
-                            required>
+                        <input id="review_review" name="review_review" type="text" value="{{review.review_review}}"
+                            class="validate" required>
                         <label for="review_review">Review</label>
                     </div>
                 </div>
-                
+    
+                <!--cancel/complete buttons-->
                 <div class="row">
                     <div class="col s12 center-align">
                         <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
@@ -218,7 +220,9 @@
                     <h4 class="center-align">Are You Sure?</h4>
                     <h5 class="center-align">{{review.review_name}} will be permanantly deleted</h5>
                 </div>
-            </div>    
+            </div> 
+            
+            <!-- yes/no buttons -->
             <div class="row">
                 <div class="col s12 center-align">
                     <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">

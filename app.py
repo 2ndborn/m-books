@@ -22,6 +22,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 @app.route("/get_titles")
+# Retrieve the titles from the mongodb database
 def get_titles():
     titles = list(mongo.db.titles.find().sort("title_name", 1))
     return render_template("titles.html", titles=titles)
@@ -78,7 +79,7 @@ def signin():
                 return redirect(url_for("signin"))
 
         else:
-            # username doesn't existing
+            # username doesn't exist
             flash("Incorrect Username and/or Password entered")
             return redirect(url_for("signin"))
 
@@ -87,7 +88,7 @@ def signin():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # locate user's username from db
+    # locates user's username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -107,19 +108,16 @@ def signout():
 
 @app.route("/summary/<titles_id>")
 def summary(titles_id):
+    # retrieve the titles and reviews from the database
     titles = list(mongo.db.titles.find({"_id": ObjectId(titles_id)}))
     reviews = list(mongo.db.reviews.find({"title_id": ObjectId(titles_id)}))
     return render_template("summary.html", titles=titles, reviews=reviews)
 
 
-@app.route("/get_review/<review_id>")
-def review_id(review_id):
-    review = mongo.db.reviews.find({"_id": ObjectId(review_id)})
-
-
 @app.route("/add_title", methods=["GET", "POST"])
 def add_title():
     if request.method == "POST":
+        # Check if the title already exists in the database
         title_name = request.form.get("title_name")
         if mongo.db.titles.find_one({"title_name": title_name}):
             flash("Title already exists")
@@ -135,35 +133,12 @@ def add_title():
                 "title_review": request.form.get("title_review"),
                 "created_by": session["user"]
             }
+            # Inserts title variable into the database
             mongo.db.titles.insert_one(title)
             flash("Title Successfully Added")
             return redirect(url_for("get_titles"))
 
     return render_template("add_title.html")
-
-
-@app.route("/edit_title/<title_id>", methods=["GET", "POST"])
-def edit_title(title_id):
-    if request.method == "POST":
-        creator = mongo.db.titles.find_one({"created_by": session["user"]})
-        if creator:
-            submit = {
-                "title_name": request.form.get("title_name"),
-                "title_year": request.form.get("title_year"),
-                "title_status": request.form.get("title_status"),
-                "title_mangaka": request.form.get("title_mangaka"),
-                "title_story": request.form.get("title_story"),
-                "title_image": request.form.get("title_image"),
-            }
-            mongo.db.titles.update_many(
-                {"_id": ObjectId(title_id)}, {"$set": submit})
-            flash("Title Successfully Updated")
-        else:
-            flash("Cannot be edited")
-        return redirect(url_for("get_titles"))
-
-    title = mongo.db.titles.find_one({"_id": ObjectId(title_id)})
-    return render_template("summary.html", title=title)
 
 
 @app.route("/add_review/<title_id>", methods=["GET", "POST"])
@@ -174,6 +149,7 @@ def add_review(title_id):
         creator = (mongo.db.reviews.find_one(
             {"created_by": session["user"], "title_id": ObjectId(title_id)}))
         if creator is not None:
+            # ensures user can review title again after review has been deleted
             flash("You have already reviewed this title.")
             return redirect(url_for("get_titles", title_id=title_id))
         else:
@@ -188,10 +164,37 @@ def add_review(title_id):
         return redirect(url_for("get_titles", title_id=title_id))
 
 
+@app.route("/edit_title/<title_id>", methods=["GET", "POST"])
+def edit_title(title_id):
+    if request.method == "POST":
+        creator = mongo.db.titles.find_one({"created_by": session["user"]})
+        # if creator submits and update
+        if creator:
+            submit = {
+                "title_name": request.form.get("title_name"),
+                "title_year": request.form.get("title_year"),
+                "title_status": request.form.get("title_status"),
+                "title_mangaka": request.form.get("title_mangaka"),
+                "title_story": request.form.get("title_story"),
+                "title_image": request.form.get("title_image"),
+            }
+            mongo.db.titles.update_many(
+                {"_id": ObjectId(title_id)}, {"$set": submit})
+            flash("Title Successfully Updated")
+        else:
+            # don't update if not the creator
+            flash("Cannot be edited")
+        return redirect(url_for("get_titles"))
+
+    title = mongo.db.titles.find_one({"_id": ObjectId(title_id)})
+    return render_template("summary.html", title=title)
+
+
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
         creator = mongo.db.reviews.find_one({"created_by": session["user"]})
+        # ensures only the creator can edit the review
         if creator:
             submit = {
                 "review_name": request.form.get("review_name"),
@@ -208,6 +211,7 @@ def edit_review(review_id):
 @app.route("/delete_title/<title_id>")
 def delete_title(title_id):
     creator = mongo.db.titles.find_one({"created_by": session["user"]})
+    # ensures only the creator can delete the title
     if creator:
         mongo.db.titles.delete_one({"_id": ObjectId(title_id)})
         flash("Title Successfully Deleted")
@@ -219,6 +223,7 @@ def delete_title(title_id):
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     creator = mongo.db.reviews.find_one({"created_by": session["user"]})
+    #ensures only the creator can delete the review
     if creator:
         mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
         flash("Review Successfully Deleted")
