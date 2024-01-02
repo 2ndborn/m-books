@@ -127,12 +127,14 @@ M.Books is a web application designed that enables its users to search for Japan
 - [MongoDB](https://mongodb.com) for the database.
 - Chrome Developer Tools for device testing.
 - Google Lighthouse to text site performance.
+- [wall.alphacoders.com](https://wall.alphacoders.com/big.php?i=1342052) for the background image.
 
 ## Testing
 
 ### Code Validation
 
 -	**HTML**
+
   -	title.html ![Home](readme.files/html_get-title.png)
   -	signin.html ![Signin](readme.files/html_signin.png)
   -	register.html ![Register](readme.files/html_register.png)
@@ -217,7 +219,7 @@ M.Books is a web application designed that enables its users to search for Japan
 	 - *The Register page is refreshed when the “Register” link is pressed.*
 	 - *The user is directed to the Register page when the "Register” link is pressed on the Home and Sign-In pages.*
 
-**Signed In**
+#### Signed In
 
 - Does the “Profile” link on the navigation bar refresh/direct the user to the Profile page?
 	 - *The Profile page is refreshed when the “Profile” link is pressed.*
@@ -236,7 +238,7 @@ Home Page*
 - Is the user directed to the summary page of the same title when a manga title is pressed?
   - *When the “Demon Slayer” is pressed, the Demon Slayer summary page is rendered.*
 
-**Sign-In Page**
+#### Sign-In Page
 
 - When the correct username and password is entered successfully, is the profile page rendered after the Sign-In button is pressed?
 	 -	*The Profile page is rendered displaying the message “Welcome {{username}}” when the correct username and password is entered after the “Sign-In button is pressed.*
@@ -250,7 +252,7 @@ Home Page*
 - When the Register link at the bottom of the page is clicked, is the user directed to the Register page?
 	 - The user is directed to the Register page when the Register link at the bottom of the page is pressed.
 
-**Register Page**
+#### Register Page
 
 - When a username and password is entered successfully, is the profile page rendered after the Register button is pressed?
 	 - *The Profile page is rendered displaying the message “Registration Successful” when the correct username and password is entered after the “Register” button is pressed.*
@@ -264,7 +266,7 @@ Home Page*
 - When the Sign-In link at the bottom of the page is clicked, is the user directed to the Sign-In page?
 	 - *The user is directed to the Sign-In page when the Sign-In link at the bottom of the page is pressed.*
 
-**Add-Title Page**
+#### Add-Title Page
 
 - When the requirements of the text input boxes are not met, does the line turn red displaying the message “Please match the format requested”?
 	 - The line turns red when the requirements of the text input boxes are not met, displaying the message “Please match the format requested”.
@@ -278,12 +280,12 @@ Home Page*
 - When the user enters a title that already exists, after the Add-Title button is pressed, is the Add-Title page refreshed displaying the message “Title already exists”?
 	 - *The page is refreshed after pressing Add-Title button displaying the message “Title already exists”, when the user enters a title that already exists.*
 
-**Summary Page (Signed Out)**
+#### Summary Page (Signed Out)
 
 - Does the Summary page provide read only access in the form of the Title image, Name of Title, Year of Release, Status, Mangaka (Author), Storyline, Review Name and Review details.
 	 - *The Summary page provide read only access in the form of the Title image, Name of Title, Year of Release, Status, Mangaka (Author), Storyline, Review Name and Review details.*
 
-**Summary Page (Signed In)**
+#### Summary Page (Signed In)
 
 - When the summary page is accessed, does the user have access to the Write a Review button?
 	 - *The user has access to the write review button when the summary page is accessed.*
@@ -302,7 +304,7 @@ Home Page*
 - Does the Edit and Delete buttons display only if the user is the creator or an admin user?
 	 - *If the user is the creator or an admin user the Edit and Delete buttons are displayed or else they do not.*
 
-**Summary Edit Title**
+#### Summary Edit Title
 
 - When the Edit button in the title section is pressed, does the modal activate displaying prepopulated manga title data with a red “Cancel” and a green “Complete” button?
 	 - *The modal is activated when the Edit button is pressed displaying prepopulated manga title data with a red “Cancel” and a green “Complete” button.*
@@ -316,7 +318,7 @@ Home Page*
 - Are the details of the manga title updated following the changes made when the user accesses the summary page.
 	 - *Changes were made on all sections of the summary page and these were successfully updated following the changes that were made.*
 
-**Summary Delete Title**
+#### Summary Delete Title
 
 - When the Delete button in the title section is pressed, does the modal activate displaying the message “Are you sure? {Title} will be permanently deleted with a red “No” and a green “Yes” button?
 	 - *The modal is activated when pressed, displaying the message “Are you sure? {Title} will be permanently deleted with a red “No” and a green “Yes” button.*
@@ -330,12 +332,12 @@ Home Page*
 - Does the title still appear within the list of manga titles on the   Home page?  
 	 - *The title is no longer available within the list of manga titles on the Home page.*
 
-**Review Section**
+#### Review Section
 
 - Does the Edit and Delete buttons display only if the user is the  creator or an admin user?
   - The Edit and Delete buttons display only if the user is the creator or an admin user.
 
-**Edit Review**
+#### Edit Review
 
 - When the Edit button is pressed, does the modal activate displaying prepopulated review data with a red “Cancel” and a green “Complete” button?
 	 - *The modal activates when the Edit button is pressed displaying prepopulated review data with a red “Cancel” and a green “Complete” button.*
