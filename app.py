@@ -146,6 +146,9 @@ def add_title():
 
 @app.route("/add_review/<title_id>", methods=["GET", "POST"])
 def add_review(title_id):
+    # check if the user has logged in
+    if not ('user' in session):
+       return render_template("404.html")
     if request.method == "POST":
         # check if the user has reviewed title before
         username = mongo.db.users.find_one({"username": session["user"]})
@@ -200,11 +203,15 @@ def edit_title(title_id):
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    # check if the user has logged in
+    if not ('user' in session):
+       return render_template("404.html")
     if request.method == "POST":
         creator = mongo.db.reviews.find_one(
             {"created_by": session["user"], "_id":review_id})
+        admin = mongo.db.users.find_one({"username": "admin"})
         # ensures only the creator can edit the review
-        if creator:
+        if creator or admin:
             submit = {
                 "review_name": request.form.get("review_name"),
                 "review_review": request.form.get("review_review")
@@ -219,6 +226,9 @@ def edit_review(review_id):
 
 @app.route("/delete_title/<title_id>")
 def delete_title(title_id):
+    # check if the user has logged in
+    if not ('user' in session):
+       return render_template("404.html")
     creator = mongo.db.titles.find_one(
         {"created_by": session["user"], "_id":title_id})
     # ensures only the creator can delete the title
@@ -232,6 +242,9 @@ def delete_title(title_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
+    # check if the user has logged in
+    if not ('user' in session):
+       return render_template("404.html")
     creator = mongo.db.reviews.find_one(
         {"created_by": session["user"], "_id":review_id})
     # ensures only the creator can delete the review
