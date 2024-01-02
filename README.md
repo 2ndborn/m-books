@@ -98,7 +98,7 @@ M.Books is a web application designed that enables its users to search for Japan
   
 ## Wireframes
 
-![Home Page](readme.files/homepage.png)
+![Home Page](readme.files/home.png)
 ![Register](readme.files/register.png)
 ![Sign In](readme.files/sign-in.png)
 ![Sign Out](readme.files/sign-out.png)
