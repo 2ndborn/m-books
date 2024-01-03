@@ -118,7 +118,7 @@ def summary(titles_id):
 def add_title():
     # check if the user has logged in
     if not ('user' in session):
-       return render_template("404.html")
+        return render_template("404.html")
     if request.method == "POST":
         # Check if the title already exists in the database
         title_name = request.form.get("title_name")
@@ -148,7 +148,7 @@ def add_title():
 def add_review(title_id):
     # check if the user has logged in
     if not ('user' in session):
-       return render_template("404.html")
+        return render_template("404.html")
     if request.method == "POST":
         # check if the user has reviewed title before
         username = mongo.db.users.find_one({"username": session["user"]})
@@ -174,10 +174,10 @@ def add_review(title_id):
 def edit_title(title_id):
     # check if the user has logged in
     if not ('user' in session):
-       return render_template("404.html")
+        return render_template("404.html")
     if request.method == "POST":
         creator = mongo.db.titles.find_one(
-            {"created_by": session["user"], "_id":title_id})
+            {"created_by": session["user"], "_id": title_id})
         admin = mongo.db.users.find_one({"username": "admin"})
         # if creator submits and update
         if creator or admin:
@@ -205,10 +205,10 @@ def edit_title(title_id):
 def edit_review(review_id):
     # check if the user has logged in
     if not ('user' in session):
-       return render_template("404.html")
+        return render_template("404.html")
     if request.method == "POST":
         creator = mongo.db.reviews.find_one(
-            {"created_by": session["user"], "_id":review_id})
+            {"created_by": session["user"], "_id": review_id})
         admin = mongo.db.users.find_one({"username": "admin"})
         # ensures only the creator can edit the review
         if creator or admin:
@@ -228,11 +228,12 @@ def edit_review(review_id):
 def delete_title(title_id):
     # check if the user has logged in
     if not ('user' in session):
-       return render_template("404.html")
+        return render_template("404.html")
     creator = mongo.db.titles.find_one(
-        {"created_by": session["user"], "_id":title_id})
+        {"created_by": session["user"], "_id": title_id})
+    admin = mongo.db.users.find_one({"username": "admin"})
     # ensures only the creator can delete the title
-    if creator:
+    if creator or admin:
         mongo.db.titles.delete_one({"_id": ObjectId(title_id)})
         flash("Title Successfully Deleted")
     else:
@@ -244,11 +245,12 @@ def delete_title(title_id):
 def delete_review(review_id):
     # check if the user has logged in
     if not ('user' in session):
-       return render_template("404.html")
+        return render_template("404.html")
     creator = mongo.db.reviews.find_one(
-        {"created_by": session["user"], "_id":review_id})
+        {"created_by": session["user"], "_id": review_id})
+    admin = mongo.db.users.find_one({"username": "admin"})
     # ensures only the creator can delete the review
-    if creator:
+    if creator or admin:
         mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
         flash("Review Successfully Deleted")
     else:
