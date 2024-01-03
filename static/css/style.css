@@ -34,6 +34,12 @@ body {
     box-shadow: 5px 5px 15px 1px;
 }
 
+/******************************Headings***************************************/
+
+.mobile-header {
+    font-size: xx-large;
+}
+
 /******************************Summary Page***********************************/
 
 .text-shadow {
@@ -42,6 +48,8 @@ body {
 
 .title-image {
     padding-top: 10px;
+    width: 100%;
+    height: auto;
 }
 
 /******************************Media Queries**********************************/
@@ -75,14 +83,14 @@ body {
         width: 200px;
     }
 
-    .title-btn button {
+    .title-btn a {
         margin: 2px 0;
     }
 }
 
 @media (max-width: 360px) {
-    .title-btn button {
-        font-size: 10px;
+    .title-btn a {
+        font-size: 14px;
     }
 }
 
@@ -96,7 +104,7 @@ body {
         margin-left: 0;
     }
 
-    .title-btn button {
-        font-size: 7px;
+    .mobile-header {
+        font-size: x-large;
     }
 }

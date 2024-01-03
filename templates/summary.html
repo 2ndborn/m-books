@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     
-<!--back button-->
+    <!--back button-->
     <div class="row">
         <div class="col s12 back-button">
             <a href="{{ url_for('get_titles') }}" class="waves-effect waves-light btn cyan"><i class="fa-solid fa-arrow-left"></i></a>            
@@ -12,11 +12,11 @@
     <h1 class="center-align grey-text text-darken-3 text-shadow"><strong>Summary</strong></h1>
 
     <div class="row container">
-        <div class="col s12 container" method="POST" action="{{ url_for('summary', titles_id=titles._id) }}">
+        <div class="col s12 container">
             <!--title summary-->
             <div class="col s12 col m10 offset-m1 card-panel box-shadow">
                 {% for title in titles %}
-                    <img class="materialboxed title-image" height="auto" width="100%"                    
+                    <img class="materialboxed title-image"                    
                         src="{{title.title_image}}" alt="{{title.title_name}} image">            
                     <ul class="col s12 collection with-header">
                         <li class="collection-header">
@@ -32,12 +32,12 @@
                         <div class="col s12 center-align title-btn">
                             <!-- Modal Trigger for edit -->
                             {% if session.user|lower == title.created_by|lower or session.user|lower == "admin" %}
-                            <Button class="waves-effect waves-light cyan btn modal-trigger" href="#modal1">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                            <a class="waves-effect waves-light cyan btn modal-trigger" href="#modal1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
                             <!-- Modal Trigger for delete -->
-                            <Button class="waves-effect waves-light red btn modal-trigger" href="#modal2">Delete <i class="fa-solid fa-trash"></i></button>
+                            <a class="waves-effect waves-light red btn modal-trigger" href="#modal2">Delete <i class="fa-solid fa-trash"></i></a>
                             {% endif %}
                             <!-- Modal Trigger -->
-                            <Button class="waves-effect waves-light blue btn modal-trigger" href="#modal3" hidden>Write a Review <i class="fa-solid fa-pen"></i></button>                              
+                            <a class="waves-effect waves-light blue btn modal-trigger" href="#modal3" hidden>Write a Review <i class="fa-solid fa-pen"></i></a>                              
                         </div>
                     </div>
                     {% endif %}
@@ -65,7 +65,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <select id="title_status" name="title_status" class="validate" required>
-                                            <option value="{{title.title_status}}" selected>{{title.title_status}}</option>
+                                            <option value="" selected>{{title.title_status}}</option>
                                             <option value="Ongoing">Ongoing</option>
                                             <option value="Completed">Completed</option>
                                         </select>
@@ -148,8 +148,7 @@
                             </div>
                         </form>
                     </div>
-                {% endfor %}    
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -160,18 +159,18 @@
     <div class="row container">
         <div class="col s12 container">
             {% for review in reviews %}
-            <div class="col s12 col m10 offset-m1 card-panel box-shadow" method="POST" action="{{ url_for('summary', titles_id=titles._id)}}">
-                <ul class="col s12 collection with-header grey-text text-darken-3">                 
+            <form class="col s12 col m10 offset-m1 card-panel box-shadow" method="POST" action="{{ url_for('summary', titles_id=titles._id)}}">
+                <div class="col s12 collection with-header grey-text text-darken-3">                 
                     <h5><strong>{{review.review_name}}</strong></h5>
                     <p>{{review.review_review}}</p>
                     {% if session.user|lower == review.created_by|lower or session.user == "admin" %}
                     <div class="row center-align">
-                        <Button class="waves-effect waves-light btn cyan modal-trigger" href="#modal4">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-                        <button class="waves-effect waves-light btn red modal-trigger" href="#modal5">Delete <i class="fa-solid fa-trash"></i></button>
+                        <a class="waves-effect waves-light btn cyan modal-trigger" href="#modal4">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="waves-effect waves-light btn red modal-trigger" href="#modal5">Delete <i class="fa-solid fa-trash"></i></a>
                     </div>
                     {% endif %}
-                </ul>
-            </div>
+                </div>
+            </form>
             {% endfor %}
         </div>
     </div>             
@@ -184,12 +183,12 @@
                 {% if session.user == review.created_by or session.user == "admin" %}
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="review_name" name="review_name" type="text" value="{{review.review_name}}" minlength="5"
+                        <input name="review_name" type="text" value="{{review.review_name}}" minlength="5"
                             maxlength="50" class="validate" required>
                         <label for="review_name">Name of Review</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="review_review" name="review_review" type="text" value="{{review.review_review}}"
+                        <input name="review_review" type="text" value="{{review.review_review}}"
                             class="validate" required>
                         <label for="review_review">Review</label>
                     </div>
