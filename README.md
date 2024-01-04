@@ -178,7 +178,7 @@ M.Books is a web application designed that enables its users to search for Japan
 - If the user is the creator of the entry then they will see a green "Edit" and a red "Delete" button. ![edit_del_btn](readme.files/edit_del_btn.png)
 - Pressing the "Write a Review" button triggers a model with 2 input boxes, "Name Your Review" and "Write a Review". Below is a red "Cancel" button and a green "Add Review" button. ![rev_modal](readme.files/rev_modal.png)
 - Both input boxes are required with a minimum of 5 charactor otherwise the review will not submit. Users press the "Add Review" button once this has been completed.
-- Pressing the red cancel button refreshes the closes the modal.
+- Pressing the red cancel button closes the modal.
 - Pressing the green "Add Review" button refreshes the page displaying a message "Review Successfully Added" ![rev_add_success](readme.files/rev_add_success.png)
 - If the user scrolls down the page they will see that their review has been added to the review section with an  "Edit" and "Delete" button . ![added_review](readme.files/added_review.png)
 - If a user attempts to enter a 2nd review on the same title they will be redirected to the Home page with the message "You have already reviewed this title." ![existing_review](readme.files/existing_review.png)
@@ -291,11 +291,11 @@ Home Page*
 - When the Write a Review button is pressed, is the modal activated displaying a Review Name text input box, a Write a Review text input box, a red Cancel button and a green Add Review button?
 	 - *The modal is activated when the Write a Review button is pressed displaying a Review Name text input box, a Write a Review text input box a red Cancel button and a green Add Review button.*
 
-- When the Write a Review Cancel button is pressed, does it direct the user to the Home page?
-	 - *The user is directed to the Home page when the Write a Review Cancel button is pressed.*
+- When the Write a Review Cancel button is pressed, does it close the modal?
+	 - *The modal is closed when the Write a Review Cancel button is pressed.*
 
-- When the user satisfies the requirements to add a review, is the user directed to the Home page displaying the message “Review Successfully Added”?
-	 - *The user is directed to the Home page displaying the message "Review Successfully Added” when the requirements to add a review have been met.*
+- When the user satisfies the requirements to add a review, does it refresh the page displaying the message “Review Successfully Added”?
+	 - *The page is refreshed displaying the message "Review Successfully Added” when the requirements to add a review have been met.*
 
 - When the requirements to add a review have not been met, does the lines turn red displaying the message “Please match the format requested”?
 	 - *The line turns red displaying the message “Please match the format requested” when the requirements to add a review have not been met.*
@@ -307,11 +307,11 @@ Home Page*
 - When the Edit button in the title section is pressed, does the modal activate displaying prepopulated manga title data with a red “Cancel” and a green “Complete” button?
 	 - *The modal is activated when the Edit button is pressed displaying prepopulated manga title data with a red “Cancel” and a green “Complete” button.*
 
-- When the cancel button is pressed does it direct the user to the Home page?
-	 - *The user is directed to the Home page when the cancel button is pressed.*
+- When the cancel button is pressed does it refresh the page?
+	 - *The page is refreshed when the cancel button is pressed.*
 
-- When the Complete button is pressed does it direct the user to the Home page displaying the message “Title successfully updated”.
-	 - *The user is directed to the Home page displaying the message “Title successfully updated” when the complete button is pressed.*
+- When the Complete button is pressed does the page refresh displaying the message “Title successfully updated”.
+	 - *The page is refreshed displaying the message “Title successfully updated” when the complete button is pressed.*
 
 - Are the details of the manga title updated following the changes made when the user accesses the summary page.
 	 - *Changes were made on all sections of the summary page and these were successfully updated following the changes that were made.*
@@ -340,11 +340,11 @@ Home Page*
 - When the Edit button is pressed, does the modal activate displaying prepopulated review data with a red “Cancel” and a green “Complete” button?
 	 - *The modal activates when the Edit button is pressed displaying prepopulated review data with a red “Cancel” and a green “Complete” button.*
 
-- When the “Cancel” button is pressed does it direct the user to the Home page?
-	 - *The user is directed to the Home page when the cancel button is pressed.*
+- When the “Cancel” button is pressed does the modal close?
+	 - *The modal is closed when the cancel button is pressed.*
 
-- When the Complete button is pressed does it direct the user to the Home page displaying the message “Review successfully updated”
-	 - *The user is directed to the Home page displaying the message “Review successfully updated” when the complete button is pressed.*
+- When the Complete button is pressed does the page refresh displaying the message “Review successfully updated”
+	 - *The page is refreshed displaying the message “Review successfully updated” when the complete button is pressed.*
 
 - Have the details of the review been updated following the changes made when the user accesses the summary page?
 	 - *Changes were made on all sections of the review, and these were successfully updated following the changes that were made.*
