@@ -178,19 +178,19 @@ M.Books is a web application designed that enables its users to search for Japan
 - If the user is the creator of the entry then they will see a green "Edit" and a red "Delete" button. ![edit_del_btn](readme.files/edit_del_btn.png)
 - Pressing the "Write a Review" button triggers a model with 2 input boxes, "Name Your Review" and "Write a Review". Below is a red "Cancel" button and a green "Add Review" button. ![rev_modal](readme.files/rev_modal.png)
 - Both input boxes are required with a minimum of 5 charactor otherwise the review will not submit. Users press the "Add Review" button once this has been completed.
-- Pressing the red cancel button refreshes the Summary Page.
-- Pressing the green "Add Review" button directs users tot he Home page displaying a message "Review Successfully Added" ![rev_add_success](readme.files/rev_add_success.png)
-- If the user goes back to that titles summary page they will see that their review has been added to the review section with an  "Edit" and "Delete" button . ![added_review](readme.files/added_review.png)
+- Pressing the red cancel button refreshes the closes the modal.
+- Pressing the green "Add Review" button refreshes the page displaying a message "Review Successfully Added" ![rev_add_success](readme.files/rev_add_success.png)
+- If the user scrolls down the page they will see that their review has been added to the review section with an  "Edit" and "Delete" button . ![added_review](readme.files/added_review.png)
 - If a user attempts to enter a 2nd review on the same title they will be redirected to the Home page with the message "You have already reviewed this title." ![existing_review](readme.files/existing_review.png)
 - Pressing the green "Edit" button in the Summary section opens up a model that is pre populated with the titles existing data. At the bottom of the modal is a red "cancel" button that refreshes the page and a green "complete" button that submits the changes the user has made. ![edit_title](readme.files/edit_title.png)
-- Once the user has pressed the "complete" button they are redirected to the Home page with a the message "Title Successfully Updated". ![update_title_mes](readme.files/update_title_mes.png)
+- Once the user has pressed the "complete" button the page is refreshed with a the message "Title Successfully Updated". ![update_title_mes](readme.files/update_title_mes.png)
 - Pressing the red "Delete" button in the summary section opens up a modal that warns the user "{title} will be permanently deleted". At the botttom of the modal is a red "No" button and a green "Yes" ![del_title](readme.files/del_title.png)
-- Pressing "No" refreshes the page.
+- Pressing "No" closes the modal.
 - Pressing "Yes" redirects the user to the Home page with a message "Title Successfully Deleted". ![del_title_mess](readme.files/del_title_mess.png)
 - In the review section if the user presses the green "Edit" button then a modal is opened that is prepopulated with the review data and a red "Cancel" button and a green "Complete" button. ![edit_rev](readme.files/edit_rev.png)
-- The cancel button will refresh the page and the complete button will redirect the user to the Home page with the message "Review Successfully Updated" ![edit_rev_mess](readme.files/edit_rev_mess.png)
+- The cancel button closes the modal and the complete button refreshes the page with the message "Review Successfully Updated" ![edit_rev_mess](readme.files/edit_rev_mess.png)
 - Pressing the red "Delete" button in the Review section opens up a modal that warns the user "Review will be permanently deleted". At the botttom of the modal is a red "No" button and a green "Yes" ![del_rev](readme.files/del_rev.png)
-- Pressing "No" refreshes the page.
+- Pressing "No" closes the modal.
 - Pressing "Yes" redirects the user to the Home page with a message "Review Successfully Deleted". ![del_rev_mess](readme.files/del_rev_mess.png)
 - Users who press the Add Title in the navbar will be directed to the Add title page. They will have to complete 6 text input areas. Name of title, Image (url), Year of release, Status, Mangaka (Author) and Story. At the bottom of the page is a green "Add Title" button and a red "Cancel" button. ![add_title_page](readme.files/add_title_page.png)
 - All sections need to be completed in order to submit a new title otherwise the input area turns red. ![add_title_req](readme.files/add_title_req.png)
@@ -429,4 +429,5 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 
 ## Credits
 
-- [wall.alphacoders.com](https://wall.alphacoders.com/big.php?i=1342052) for the background image.
+- [wall.alphacoders.com](https://wall.alphacoders.com/big.php?i=1342052) for the background image
+- [w3schools](https://www.w3schools.com/css/css_text_shadow.asp)
