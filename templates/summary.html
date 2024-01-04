@@ -65,7 +65,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <select id="title_status" name="title_status" class="validate" required>
-                                            <option value="" selected>{{title.title_status}}</option>
+                                            <option value="{{title.title_status}}" selected>{{title.title_status}}</option>
                                             <option value="Ongoing">Ongoing</option>
                                             <option value="Completed">Completed</option>
                                         </select>
@@ -86,10 +86,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 center-align">
-                                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
+                                        <a href="{{ url_for('summary', titles_id=title._id) }}" class="btn-large red modal-close">
                                             Cancel
                                         </a>
-                                        <button type="submit" class="btn-large modal-close">Complete</button>
+                                        <button type="submit" class="btn-large model-close">Complete</button>
                                     </div>
                                 </div>                                
                             </div>
@@ -108,7 +108,7 @@
                     
                             <div class="row">
                                 <div class="col s12 center-align">
-                                    <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
+                                    <a class="btn-large red modal-close">
                                         No
                                     </a>
                                     <a href="{{ url_for('delete_title', title_id=title._id) }}" class="btn-large cyan btn">
@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 center-align">
-                                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
+                                        <a href="{{ url_for('summary', titles_id=title._id) }}" class="btn-large red modal-close">
                                             Cancel
                                         </a>
                                         <button type="submit" class="btn-large modal-close">Add Review</button>
@@ -197,9 +197,7 @@
                 <!--cancel/complete buttons-->
                 <div class="row">
                     <div class="col s12 center-align">
-                        <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
-                            Cancel
-                        </a>
+                        <button class="btn-large red modal-close">Cancel</button>
                         <button type="submit" class="btn-large cyan modal-close">Complete</button>
                     </div>
                 </div>
@@ -224,9 +222,7 @@
             <!-- yes/no buttons -->
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="{{ url_for('get_titles') }}" class="btn-large red modal-close">
-                        No
-                    </a>
+                    abutton class="btn-large red modal-close">No</button>
                     <a href="{{ url_for('delete_review', review_id=review._id) }}"
                         class="btn-large cyan">
                         Yes
