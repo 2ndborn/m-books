@@ -195,6 +195,8 @@ M.Books is a web application designed that enables its users to search for Japan
 - Users who press the Add Title in the navbar will be directed to the Add title page. They will have to complete 6 text input areas. Name of title, Image (url), Year of release, Status, Mangaka (Author) and Story. At the bottom of the page is a green "Add Title" button and a red "Cancel" button. ![add_title_page](readme.files/add_title_page.png)
 - All sections need to be completed in order to submit a new title otherwise the input area turns red. ![add_title_req](readme.files/add_title_req.png)
 - If the user pressed the cancel button they are redirected to the Home page. If they press the Add Title button they are redirected to the Home page with the message "Title Successfully Added". ![add_title_mes](readme.files/add_title_mess.png)
+- The admin user has access to create, read, update and delete everything on the summary page.
+![admin](readme.files/admin.png)
 - If a user submits a title that already existing the add title page will refresh with a message "Title alreday exists" ![exist_title_mess](readme.files/exist_title_mess.png)
 - If the user presses Sign Out on the navbar they are directed to the Sign In page with the message "You have signed out" ![signout_mess](readme.files/signout_mess.png)
 
