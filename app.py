@@ -157,7 +157,7 @@ def add_review(title_id):
         if creator is not None:
             # ensures user can review title again after review has been deleted
             flash("You have already reviewed this title.")
-            return redirect(url_for("get_titles", title_id=title_id))
+            return redirect(url_for("get_titles", titles_id=title_id))
         else:
             review = {
                 "review_name": request.form.get("review_name"),
@@ -167,7 +167,7 @@ def add_review(title_id):
             }
             mongo.db.reviews.insert_one(review)
             flash("Review Successfully Added")
-        return redirect(url_for("summary", title_id=title_id))
+        return redirect(url_for("summary", titles_id=title_id))
 
 
 @app.route("/edit_title/<title_id>", methods=["GET", "POST"])
@@ -221,7 +221,9 @@ def edit_review(review_id):
             flash("Review Successfully Updated")
         else:
             flash("Cannot be edited")
-        return redirect(url_for("get_titles"))
+        # retrieve the review from the database 
+        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        return redirect(url_for("summary", titles_id=review["title_id"]))
 
 
 @app.route("/delete_title/<title_id>")
