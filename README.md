@@ -433,4 +433,4 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 ## Credits
 
 - [wall.alphacoders.com](https://wall.alphacoders.com/big.php?i=1342052) for the background image
-- [w3schools](https://www.w3schools.com/css/css_text_shadow.asp)
+- [w3schools](https://www.w3schools.com/css/css_text_shadow.asp) for text shadow.
