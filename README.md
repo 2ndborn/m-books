@@ -498,11 +498,13 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 	- Add:
 <div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
 	<pre>
-		<code>IP = `0.0.0.0`</code>
-		<code>PORT = `5000`</code>
-		<code>MONGO_DBNAME = `your_database_name`</code>
-		<code>MONGO_URI = `your_MongoDB_Atlas_URI`</code>
-		<code>SECRET_KEY = `your_secret_key`</code>
+		<code>
+		IP = 0.0.0.0
+		PORT = 5000<
+		MONGO_DBNAME = your_database_name
+		MONGO_URI = your_MongoDB_Atlas_URI
+		SECRET_KEY = your_secret_key
+		</code>
 	</pre>
 </div>
 5. Deploy
