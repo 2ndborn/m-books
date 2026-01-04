@@ -500,7 +500,7 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 	<pre>
 		<code>
 		IP = 0.0.0.0
-		PORT = 5000<
+		PORT = 5000
 		MONGO_DBNAME = your_database_name
 		MONGO_URI = your_MongoDB_Atlas_URI
 		SECRET_KEY = your_secret_key
@@ -508,9 +508,11 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 	</pre>
 </div>
 5. Deploy
-	-   Click **Deploy**.
-	-   Render will build and start your Flask app.
-	-   Once complete, you’ll get a **public URL** for your app.
+	-  Click **Deploy**.
+	-  Render will build and start your Flask app.
+	-  Once complete, you’ll get a **public URL** for your app.
+6. Live website address: [M-Books](https://m-books-7jir.onrender.com/)
+
 
 ### Heroku
 
