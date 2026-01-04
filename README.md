@@ -447,6 +447,69 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
  5. The browser will open.
 ![webpage](readme.files/main_webpage.png)
 
+### Render (Migrated over to render because its free)
+#### Change to initial code need to make it compatible with Render:
+1. Change Procfile command line from:
+<div style="background:#f6f8fa; padding:1em; border-radius:6px;">
+  <pre><code>web: python app.py</code></pre>
+  <h6>to</h6>
+  <pre><code>web: gunicorn app:app --bind 0.0.0.0:$PORT</code></pre>
+</div>
+
+2. Change the end part of the app.py file from:
+<div style="background:#f6f8fa; padding:1em; border-radius:6px;">
+	<pre>
+	<code>
+  		app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=False)
+	</code>
+	</pre>
+  <h6>to</h6>
+  <pre><code>app.run(debug=True)</code></pre>
+</div>
+
+#### Deployment to Render
+
+1. Go to [Render](https://render.com/) and log in.
+2. Create a New Web Service.
+	-   Click **New +** → **Web Service**.
+	-  Under **Connect Repository**, choose **Connect GitHub**.
+	-   Authorize Render to access your GitHub account.
+	-  Paste the URL (as seen below):
+<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+	<pre><code>https://github.com/2ndborn/m-books.git</code></pre>
+</div>
+3. Configure Your Service `Fill in the following:`
+	- Environment:
+<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+	<pre><code>python 3</code></pre>
+</div>
+	- Build command:
+<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+	<pre><code>pip install -r requirements.txt</code></pre>
+</div>
+	- Start command:
+<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+	<pre><code>gunicorn app:app --bind 0.0.0.0:$PORT</code></pre>
+</div>
+4. Add Environment Variables
+	-  Go to the **Environment** tab in Render.
+	- Add:
+<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+	<pre>
+		<code>IP = `0.0.0.0`</code>
+		<code>PORT = `5000`</code>
+		<code>MONGO_DBNAME = `your_database_name`</code>
+		<code>MONGO_URI = `your_MongoDB_Atlas_URI`</code>
+		<code>SECRET_KEY = `your_secret_key`</code>
+	</pre>
+</div>
+5. Deploy
+	-   Click **Deploy**.
+	-   Render will build and start your Flask app.
+	-   Once complete, you’ll get a **public URL** for your app.
+
 ### Heroku
 
 1. Go to [Heroku.com](https://id.heroku.com/login)
