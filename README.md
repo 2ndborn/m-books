@@ -474,39 +474,39 @@ I changed the title_id in the review variable in the @app.route(“/summary”) 
 1. Go to [Render](https://render.com/) and log in.
 2. Create a New Web Service.
 	-   Click **New +** → **Web Service**.
-	-  Under **Connect Repository**, choose **Connect GitHub**.
+	-  	Under **Connect Repository**, choose **Connect GitHub**.
 	-   Authorize Render to access your GitHub account.
-	-  Paste the URL (as seen below):
-<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
-	<pre><code>https://github.com/2ndborn/m-books.git</code></pre>
-</div>
+	-  	Paste the URL (as seen below):
+	<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+		<pre><code>https://github.com/2ndborn/m-books.git</code></pre>
+	</div>
 3. Configure Your Service `Fill in the following:`
-	- Environment:
-<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
-	<pre><code>python 3</code></pre>
-</div>
-	- Build command:
-<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
-	<pre><code>pip install -r requirements.txt</code></pre>
-</div>
-	- Start command:
-<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
-	<pre><code>gunicorn app:app --bind 0.0.0.0:$PORT</code></pre>
-</div>
+	Environment:
+	<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+		<pre><code>python 3</code></pre>
+	</div>
+	Build command:
+	<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+		<pre><code>pip install -r requirements.txt</code></pre>
+	</div>
+	Start command:
+	<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+		<pre><code>gunicorn app:app --bind 0.0.0.0:$PORT</code></pre>
+	</div>
 4. Add Environment Variables
-	-  Go to the **Environment** tab in Render.
-	- Add:
-<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
-	<pre>
-		<code>
-		IP = 0.0.0.0
-		PORT = 5000
-		MONGO_DBNAME = your_database_name
-		MONGO_URI = your_MongoDB_Atlas_URI
-		SECRET_KEY = your_secret_key
-		</code>
-	</pre>
-</div>
+	-	Go to the **Environment** tab in Render.
+	-	Add:
+	<div  style="background:#f6f8fa; padding:1em; border-radius:6px;">
+		<pre>
+			<code>
+			IP = 0.0.0.0
+			PORT = 5000
+			MONGO_DBNAME = your_database_name
+			MONGO_URI = your_MongoDB_Atlas_URI
+			SECRET_KEY = your_secret_key
+			</code>
+		</pre>
+	</div>
 5. Deploy
 	-  Click **Deploy**.
 	-  Render will build and start your Flask app.
